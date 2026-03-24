@@ -13,6 +13,11 @@
 
 	let currentSlide = $state(0);
 	let isAutoPlay = $state(true);
+	let uploading = $state(false);
+
+	/** @type {HTMLInputElement|null} */
+	let fileInputRef = $state(null);
+	let activeUploadIndex = $state(-1);
 
 	onMount(() => {
 		let interval;
@@ -47,12 +52,48 @@
 		updated[index] = { ...updated[index], [field]: value };
 		saveSlides(updated);
 	}
+
+	function triggerFileUpload(index) {
+		activeUploadIndex = index;
+		fileInputRef?.click();
+	}
+
+	async function handleFileUpload(e) {
+		const file = e.target?.files?.[0];
+		if (!file || activeUploadIndex < 0) return;
+
+		uploading = true;
+		const formData = new FormData();
+		formData.append('file', file);
+
+		try {
+			const res = await fetch('/api/upload', { method: 'POST', body: formData });
+			const data = await res.json();
+			if (data.url) {
+				updateSlideField(activeUploadIndex, 'image', data.url);
+			}
+		} catch (err) {
+			console.error('Upload failed:', err);
+		} finally {
+			uploading = false;
+			if (fileInputRef) fileInputRef.value = '';
+		}
+	}
 </script>
 
+<!-- Hidden file input -->
+<input
+	type="file"
+	accept="image/*"
+	class="hidden"
+	bind:this={fileInputRef}
+	onchange={handleFileUpload}
+/>
+
 <!-- Hero Carousel -->
-<section class="relative min-h-screen overflow-hidden bg-black pt-20">
+<section class="relative min-h-screen overflow-hidden bg-black pt-18">
 	<div class="relative h-[calc(100vh-80px)] w-full">
-		{#each slides as slide, index (slide.id)}
+		{#each slides as slide, index (index)}
 			{#if index === currentSlide}
 				<div
 					class="absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out"
@@ -109,15 +150,36 @@
 								{/if}
 							</p>
 
+							<!-- Image edit controls -->
 							{#if $isEditMode && isAdmin}
-								<div class="mb-4 flex items-center gap-2">
-									<span class="text-xs text-amber-400">Image URL:</span>
-									<input
-										type="text"
-										value={slide.image}
-										onchange={(e) => updateSlideField(index, 'image', e.target.value)}
-										class="flex-1 rounded-lg border border-amber-400 bg-black/50 px-3 py-1 text-xs text-white"
-									/>
+								<div class="mb-4 rounded-xl bg-black/60 p-4 backdrop-blur-sm border border-amber-400/30">
+									<p class="mb-3 text-xs font-bold text-amber-400 uppercase tracking-wider">
+										<span class="material-symbols-outlined text-xs align-middle mr-1">image</span>
+										Ganti Background Slide {index + 1}
+									</p>
+									<div class="flex flex-col gap-2 sm:flex-row sm:items-center">
+										<input
+											type="text"
+											value={slide.image}
+											onchange={(e) => updateSlideField(index, 'image', e.target.value)}
+											class="flex-1 rounded-lg border border-white/20 bg-white/10 px-3 py-2 text-xs text-white placeholder:text-gray-400 focus:border-amber-400 focus:outline-none"
+											placeholder="Paste image URL di sini..."
+										/>
+										<span class="text-xs text-gray-400 hidden sm:block">atau</span>
+										<button
+											onclick={() => triggerFileUpload(index)}
+											disabled={uploading}
+											class="flex items-center justify-center gap-2 rounded-lg bg-amber-500 px-4 py-2 text-xs font-bold text-gray-900 transition-all hover:bg-amber-400 disabled:opacity-50"
+										>
+											{#if uploading}
+												<span class="material-symbols-outlined text-sm animate-spin">progress_activity</span>
+												Uploading...
+											{:else}
+												<span class="material-symbols-outlined text-sm">upload_file</span>
+												Pilih File
+											{/if}
+										</button>
+									</div>
 								</div>
 							{/if}
 
@@ -139,7 +201,7 @@
 
 	<!-- Indicator Dots -->
 	<div class="absolute bottom-8 left-1/2 z-20 flex -translate-x-1/2 gap-3">
-		{#each slides as slide, index (slide.id)}
+		{#each slides as slide, index (index)}
 			{@const isActive = index === currentSlide}
 			<button
 				onclick={() => goToSlide(index)}

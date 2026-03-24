@@ -21,3 +21,11 @@ Thumbs.db
 # Vite
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Uploads
+static/uploads
+
+# Temp
+*.txt
+prisma_push_output.txt
+seed_output.txt

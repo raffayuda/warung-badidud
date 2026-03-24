@@ -8,6 +8,10 @@
 	let { story } = $props();
 
 	const isAdmin = $derived($page.data?.isAdmin ?? false);
+	let uploading = $state(false);
+
+	/** @type {HTMLInputElement|null} */
+	let fileInputRef = $state(null);
 
 	const storyData = $derived(story ?? {
 		title: 'Dari Dapur Kecil Menuju',
@@ -38,7 +42,38 @@
 		const updated = { ...storyData, paragraphs };
 		saveStory(updated);
 	}
+
+	async function handleFileUpload(e) {
+		const file = e.target?.files?.[0];
+		if (!file) return;
+
+		uploading = true;
+		const formData = new FormData();
+		formData.append('file', file);
+
+		try {
+			const res = await fetch('/api/upload', { method: 'POST', body: formData });
+			const data = await res.json();
+			if (data.url) {
+				updateField('image', data.url);
+			}
+		} catch (err) {
+			console.error('Upload failed:', err);
+		} finally {
+			uploading = false;
+			if (fileInputRef) fileInputRef.value = '';
+		}
+	}
 </script>
+
+<!-- Hidden file input -->
+<input
+	type="file"
+	accept="image/*"
+	class="hidden"
+	bind:this={fileInputRef}
+	onchange={handleFileUpload}
+/>
 
 <!-- Editorial Story Section -->
 <section class="overflow-hidden py-24" id="tentang">
@@ -56,14 +91,26 @@
 				/>
 
 				{#if $isEditMode && isAdmin}
-					<div class="relative z-20 mt-2">
+					<div class="relative z-20 mt-2 flex gap-2">
 						<input
 							type="text"
 							value={storyData.image}
 							onchange={(e) => updateField('image', e.target.value)}
-							class="w-full rounded-lg border-2 border-amber-400 bg-amber-50 px-3 py-2 text-xs"
-							placeholder="Image URL"
+							class="flex-1 rounded-lg border-2 border-amber-400 bg-amber-50 px-3 py-2 text-xs"
+							placeholder="URL gambar atau upload file"
 						/>
+						<button
+							onclick={() => fileInputRef?.click()}
+							disabled={uploading}
+							class="flex items-center gap-1 rounded-lg bg-amber-500 px-3 py-2 text-xs font-bold text-white transition-colors hover:bg-amber-600 disabled:opacity-50"
+						>
+							{#if uploading}
+								<span class="material-symbols-outlined text-xs animate-spin">progress_activity</span>
+							{:else}
+								<span class="material-symbols-outlined text-xs">upload_file</span>
+							{/if}
+							Pilih File
+						</button>
 					</div>
 				{/if}
 

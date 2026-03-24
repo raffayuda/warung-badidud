@@ -15,6 +15,10 @@
 	let showEditModal = $state(false);
 	let editingItem = $state(null);
 	let isNewItem = $state(false);
+	let uploading = $state(false);
+
+	/** @type {HTMLInputElement|null} */
+	let fileInputRef = $state(null);
 
 	const categories = $derived([...new Set(allMenuItems.map((/** @type {any} */ i) => i.category))]);
 
@@ -84,7 +88,38 @@
 		closeDetail();
 		await invalidateAll();
 	}
+
+	async function handleFileUpload(e) {
+		const file = e.target?.files?.[0];
+		if (!file || !editingItem) return;
+
+		uploading = true;
+		const formData = new FormData();
+		formData.append('file', file);
+
+		try {
+			const res = await fetch('/api/upload', { method: 'POST', body: formData });
+			const data = await res.json();
+			if (data.url) {
+				editingItem.image = data.url;
+			}
+		} catch (err) {
+			console.error('Upload failed:', err);
+		} finally {
+			uploading = false;
+			if (fileInputRef) fileInputRef.value = '';
+		}
+	}
 </script>
+
+<!-- Hidden file input -->
+<input
+	type="file"
+	accept="image/*"
+	class="hidden"
+	bind:this={fileInputRef}
+	onchange={handleFileUpload}
+/>
 
 <svelte:head>
 	<title>Daftar Menu - Warung Badiduud</title>
@@ -409,9 +444,29 @@
 								class="w-full rounded-xl border-2 border-gray-200 px-4 py-3 focus:border-red-500 focus:outline-none" />
 						</div>
 						<div>
-							<label for="edit-image" class="mb-1 block text-sm font-semibold text-gray-700">Image URL / Path</label>
-							<input id="edit-image" type="text" bind:value={editingItem.image}
-								class="w-full rounded-xl border-2 border-gray-200 px-4 py-3 focus:border-red-500 focus:outline-none" />
+							<label for="edit-image" class="mb-1 block text-sm font-semibold text-gray-700">Gambar</label>
+							<div class="flex gap-2">
+								<input id="edit-image" type="text" bind:value={editingItem.image}
+									class="flex-1 rounded-xl border-2 border-gray-200 px-4 py-3 text-sm focus:border-red-500 focus:outline-none"
+									placeholder="URL gambar atau upload file" />
+								<button
+									onclick={() => fileInputRef?.click()}
+									disabled={uploading}
+									class="flex items-center gap-1 rounded-xl bg-gray-100 px-4 py-3 text-sm font-semibold text-gray-700 transition-colors hover:bg-gray-200 disabled:opacity-50"
+								>
+									{#if uploading}
+										<span class="material-symbols-outlined text-sm animate-spin">progress_activity</span>
+									{:else}
+										<span class="material-symbols-outlined text-sm">upload_file</span>
+									{/if}
+									Upload
+								</button>
+							</div>
+							{#if editingItem.image}
+								<div class="mt-2 overflow-hidden rounded-lg border border-gray-200">
+									<img src={editingItem.image} alt="Preview" class="h-32 w-full object-cover" />
+								</div>
+							{/if}
 						</div>
 						<div>
 							<label for="edit-category" class="mb-1 block text-sm font-semibold text-gray-700">Kategori</label>

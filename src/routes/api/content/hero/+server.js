@@ -7,18 +7,35 @@ export async function PUT({ request, locals }) {
 
 	const slides = await request.json();
 
-	// Delete all and recreate
-	await prisma.heroSlide.deleteMany();
-	await prisma.heroSlide.createMany({
-		data: slides.map((/** @type {any} */ s, /** @type {number} */ i) => ({
-			title: s.title,
-			subtitle: s.subtitle,
-			description: s.description,
-			image: s.image,
-			sortOrder: i
-		}))
-	});
+	// Update existing slides in-place to preserve IDs
+	const results = [];
+	for (let i = 0; i < slides.length; i++) {
+		const s = slides[i];
+		if (s.id) {
+			const updated = await prisma.heroSlide.update({
+				where: { id: s.id },
+				data: {
+					title: s.title,
+					subtitle: s.subtitle,
+					description: s.description,
+					image: s.image,
+					sortOrder: i
+				}
+			});
+			results.push(updated);
+		} else {
+			const created = await prisma.heroSlide.create({
+				data: {
+					title: s.title,
+					subtitle: s.subtitle,
+					description: s.description,
+					image: s.image,
+					sortOrder: i
+				}
+			});
+			results.push(created);
+		}
+	}
 
-	const updated = await prisma.heroSlide.findMany({ orderBy: { sortOrder: 'asc' } });
-	return json(updated);
+	return json(results);
 }

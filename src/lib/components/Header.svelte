@@ -5,10 +5,10 @@
 	const isAdmin = $derived($page.data?.isAdmin ?? false);
 
 	const navItems = [
-		{ id: 'beranda', label: 'Beranda', href: '/' },
-		{ id: 'menu', label: 'Menu', href: '/menu' },
-		{ id: 'tentang', label: 'Tentang Kami', href: '/tentang' },
-		{ id: 'lokasi', label: 'Lokasi', href: '/lokasi' }
+		{ id: 'beranda', label: 'Beranda', href: '/', icon: 'home' },
+		{ id: 'menu', label: 'Menu', href: '/menu', icon: 'restaurant_menu' },
+		{ id: 'tentang', label: 'Tentang Kami', href: '/tentang', icon: 'info' },
+		{ id: 'lokasi', label: 'Lokasi', href: '/lokasi', icon: 'location_on' }
 	];
 
 	function getActiveSection(pathname) {
@@ -21,24 +21,21 @@
 	}
 </script>
 
-<!-- Modern Navbar -->
+<!-- Navbar -->
 <nav
-	class="fixed z-50 w-full bg-gradient-to-r from-red-600 to-red-700 shadow-lg shadow-red-700/30 backdrop-blur-md"
+	class="fixed z-50 w-full bg-gradient-to-r from-red-600 to-red-700 shadow-lg shadow-red-700/30"
 	style="top: {isAdmin ? '40px' : '0'};"
 	aria-label="Primary navigation"
 >
 	<div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
 		<!-- Logo -->
 		<a href="/" class="group flex items-center gap-3">
-			<div
-				class="flex h-10 w-10 items-center justify-center rounded-xl bg-white/20 shadow-inner transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3"
-			>
-				<span class="text-xl font-black text-white">A</span>
+			<div class="flex items-center justify-center">
+				<img src="/logo.png" alt="Warung Badidud" class="w-12 transition-transform duration-300 group-hover:scale-110" />
 			</div>
-			<div class="flex flex-col">
-				<span class="text-xl font-black tracking-tight text-white">Ayam Juara</span>
-				<span class="text-xs font-medium text-red-200">Warung Badidud</span>
-			</div>
+			<span class="text-xl font-black tracking-tight text-white italic">
+				Warung Badidud
+			</span>
 		</a>
 
 		<!-- Desktop Menu -->
@@ -50,16 +47,6 @@
 					class="relative rounded-full px-4 py-2 text-sm font-semibold transition-all duration-300 {isActive
 						? 'bg-white/20 text-white shadow-md'
 						: 'text-red-100 hover:bg-white/10 hover:text-white'}"
-					onmouseenter={(e) => {
-						if (!isActive) {
-							e.target.style.transform = 'translateY(-2px)';
-						}
-					}}
-					onmouseleave={(e) => {
-						if (!isActive) {
-							e.target.style.transform = 'translateY(0)';
-						}
-					}}
 				>
 					{item.label}
 					{#if isActive}
