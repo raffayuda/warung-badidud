@@ -2,6 +2,7 @@
 	import { page } from '$app/stores';
 
 	let isMenuOpen = $state(false);
+	const isAdmin = $derived($page.data?.isAdmin ?? false);
 
 	const navItems = [
 		{ id: 'beranda', label: 'Beranda', href: '/' },
@@ -22,7 +23,8 @@
 
 <!-- Modern Navbar -->
 <nav
-	class="fixed top-0 z-50 w-full bg-gradient-to-r from-red-600 to-red-700 shadow-lg shadow-red-700/30 backdrop-blur-md"
+	class="fixed z-50 w-full bg-gradient-to-r from-red-600 to-red-700 shadow-lg shadow-red-700/30 backdrop-blur-md"
+	style="top: {isAdmin ? '40px' : '0'};"
 	aria-label="Primary navigation"
 >
 	<div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">

@@ -1,78 +1,71 @@
 <script>
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
-	import { heroSlides } from '$lib/data/menu.js';
+	import { isEditMode } from '$lib/stores/adminStore.js';
+	import { page } from '$app/stores';
+	import EditableText from './EditableText.svelte';
+	import { invalidateAll } from '$app/navigation';
+
+	/** @type {{ slides: any[] }} */
+	let { slides } = $props();
+
+	const isAdmin = $derived($page.data?.isAdmin ?? false);
 
 	let currentSlide = $state(0);
 	let isAutoPlay = $state(true);
 
-	// Auto-rotate slides setiap 5 detik
 	onMount(() => {
 		let interval;
-
 		const startAutoPlay = () => {
 			interval = setInterval(() => {
-				if (isAutoPlay) {
-					currentSlide = (currentSlide + 1) % heroSlides.length;
+				if (isAutoPlay && slides.length > 0) {
+					currentSlide = (currentSlide + 1) % slides.length;
 				}
 			}, 5000);
 		};
-
 		startAutoPlay();
-
-		return () => {
-			if (interval) clearInterval(interval);
-		};
+		return () => { if (interval) clearInterval(interval); };
 	});
 
 	const goToSlide = (index) => {
 		currentSlide = index;
 		isAutoPlay = false;
-		// Resume auto-play setelah 10 detik user tidak interact
-		setTimeout(() => {
-			isAutoPlay = true;
-		}, 10000);
+		setTimeout(() => { isAutoPlay = true; }, 10000);
 	};
 
-	const nextSlide = () => {
-		currentSlide = (currentSlide + 1) % heroSlides.length;
-		isAutoPlay = false;
-		setTimeout(() => {
-			isAutoPlay = true;
-		}, 10000);
-	};
+	async function saveSlides(updatedSlides) {
+		await fetch('/api/content/hero', {
+			method: 'PUT',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(updatedSlides)
+		});
+		await invalidateAll();
+	}
 
-	const prevSlide = () => {
-		currentSlide = (currentSlide - 1 + heroSlides.length) % heroSlides.length;
-		isAutoPlay = false;
-		setTimeout(() => {
-			isAutoPlay = true;
-		}, 10000);
-	};
+	function updateSlideField(index, field, value) {
+		const updated = [...slides];
+		updated[index] = { ...updated[index], [field]: value };
+		saveSlides(updated);
+	}
 </script>
 
 <!-- Hero Carousel -->
 <section class="relative min-h-screen overflow-hidden bg-black pt-20">
-	<!-- Slides Container -->
 	<div class="relative h-[calc(100vh-80px)] w-full">
-		{#each heroSlides as slide, index (slide.id)}
+		{#each slides as slide, index (slide.id)}
 			{#if index === currentSlide}
 				<div
 					class="absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out"
 					in:fade
 					out:fade
 				>
-					<!-- Background Image -->
 					<img
 						alt={slide.title}
 						class="absolute inset-0 h-full w-full object-cover brightness-50"
 						src={slide.image}
 					/>
-
-					<!-- Gradient Overlay -->
 					<div class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent"></div>
 
-					<!-- Content -->
 					<div class="relative z-10 mx-auto h-full max-w-7xl px-6 flex flex-col justify-center">
 						<div class="max-w-3xl">
 							<span
@@ -82,13 +75,51 @@
 							</span>
 
 							<h1 class="mb-4 text-5xl md:text-7xl font-extrabold leading-[1.1] tracking-tighter text-white">
-								{slide.title}
-								<span class="block italic text-red-500">{slide.subtitle}</span>
+								{#if $isEditMode && isAdmin}
+									<EditableText
+										value={slide.title}
+										tag="span"
+										className="text-5xl md:text-7xl font-extrabold text-white"
+										onSave={(v) => updateSlideField(index, 'title', v)}
+									/>
+									<span class="block italic text-red-500">
+										<EditableText
+											value={slide.subtitle}
+											tag="span"
+											className="text-5xl md:text-7xl font-extrabold italic text-red-500"
+											onSave={(v) => updateSlideField(index, 'subtitle', v)}
+										/>
+									</span>
+								{:else}
+									{slide.title}
+									<span class="block italic text-red-500">{slide.subtitle}</span>
+								{/if}
 							</h1>
 
 							<p class="mb-10 text-lg font-medium leading-relaxed text-gray-200">
-								{slide.description}
+								{#if $isEditMode && isAdmin}
+									<EditableText
+										value={slide.description}
+										tag="p"
+										className="text-lg font-medium text-gray-200"
+										onSave={(v) => updateSlideField(index, 'description', v)}
+									/>
+								{:else}
+									{slide.description}
+								{/if}
 							</p>
+
+							{#if $isEditMode && isAdmin}
+								<div class="mb-4 flex items-center gap-2">
+									<span class="text-xs text-amber-400">Image URL:</span>
+									<input
+										type="text"
+										value={slide.image}
+										onchange={(e) => updateSlideField(index, 'image', e.target.value)}
+										class="flex-1 rounded-lg border border-amber-400 bg-black/50 px-3 py-1 text-xs text-white"
+									/>
+								</div>
+							{/if}
 
 							<div class="flex flex-wrap gap-4">
 								<a
@@ -106,26 +137,9 @@
 		{/each}
 	</div>
 
-	<!-- Navigation Buttons -->
-	<!-- <button
-		onclick={prevSlide}
-		aria-label="Previous slide"
-		class="absolute left-6 top-1/2 z-20 -translate-y-1/2 rounded-full bg-white/20 p-3 text-white transition-all duration-300 hover:bg-white/40 backdrop-blur-sm"
-	>
-		<span class="material-symbols-outlined text-2xl">chevron_left</span>
-	</button>
-
-	<button
-		onclick={nextSlide}
-		aria-label="Next slide"
-		class="absolute right-6 top-1/2 z-20 -translate-y-1/2 rounded-full bg-white/20 p-3 text-white transition-all duration-300 hover:bg-white/40 backdrop-blur-sm"
-	>
-		<span class="material-symbols-outlined text-2xl">chevron_right</span>
-	</button> -->
-
 	<!-- Indicator Dots -->
 	<div class="absolute bottom-8 left-1/2 z-20 flex -translate-x-1/2 gap-3">
-		{#each heroSlides as slide, index (slide.id)}
+		{#each slides as slide, index (slide.id)}
 			{@const isActive = index === currentSlide}
 			<button
 				onclick={() => goToSlide(index)}
@@ -135,4 +149,3 @@
 		{/each}
 	</div>
 </section>
-

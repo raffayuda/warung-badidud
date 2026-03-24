@@ -1,16 +1,26 @@
 <script>
 	import Header from '$lib/components/Header.svelte';
 	import Footer from '$lib/components/Footer.svelte';
-	import { allMenuItems } from '$lib/data/menu.js';
+	import { isEditMode } from '$lib/stores/adminStore.js';
+	import { page } from '$app/stores';
+	import { invalidateAll } from '$app/navigation';
+
+	let { data } = $props();
+
+	const isAdmin = $derived($page.data?.isAdmin ?? false);
+	let allMenuItems = $derived(data.menuItems);
 
 	let selectedCategory = $state('Makanan Utama');
 	let selectedItem = $state(null);
+	let showEditModal = $state(false);
+	let editingItem = $state(null);
+	let isNewItem = $state(false);
 
-	const categories = ['Makanan Utama', 'Cemilan', 'Nasi Mangkuk'];
+	const categories = $derived([...new Set(allMenuItems.map((/** @type {any} */ i) => i.category))]);
 
-	const filteredItems = $derived(allMenuItems.filter((item) => item.category === selectedCategory));
+	const filteredItems = $derived(allMenuItems.filter((/** @type {any} */ item) => item.category === selectedCategory));
 
-	const formatPrice = (price) => {
+	const formatPrice = (/** @type {number|string} */ price) => {
 		return typeof price === 'number' ? `Rp ${price.toLocaleString('id-ID')}` : price;
 	};
 
@@ -24,10 +34,55 @@
 		document.body.style.overflow = '';
 	}
 
-	function orderViaWhatsApp(item) {
-		const message = `Halo Warung Badiduud, saya ingin memesan ${item.name} seharga ${formatPrice(item.price)}. Apakah tersedia?`;
-		const url = `https://wa.me/62812345678?text=${encodeURIComponent(message)}`;
-		window.open(url, '_blank', 'noopener,noreferrer');
+	// Admin functions
+	function openAddModal() {
+		isNewItem = true;
+		editingItem = {
+			name: '',
+			description: '',
+			price: 0,
+			image: '',
+			category: selectedCategory,
+			badge: '',
+			isFeatured: false,
+			sortOrder: allMenuItems.length
+		};
+		showEditModal = true;
+	}
+
+	function openEditModal(item) {
+		isNewItem = false;
+		editingItem = { ...item };
+		showEditModal = true;
+	}
+
+	function closeEditModal() {
+		showEditModal = false;
+		editingItem = null;
+	}
+
+	async function saveItem() {
+		if (!editingItem) return;
+
+		const url = isNewItem ? '/api/menu' : `/api/menu/${editingItem.id}`;
+		const method = isNewItem ? 'POST' : 'PUT';
+
+		await fetch(url, {
+			method,
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(editingItem)
+		});
+
+		closeEditModal();
+		await invalidateAll();
+	}
+
+	async function deleteItem(id) {
+		if (!confirm('Yakin ingin menghapus menu ini?')) return;
+
+		await fetch(`/api/menu/${id}`, { method: 'DELETE' });
+		closeDetail();
+		await invalidateAll();
 	}
 </script>
 
@@ -63,7 +118,7 @@
 						: 'bg-white text-gray-700 shadow-md hover:shadow-lg hover:scale-105 border border-gray-200'}"
 				>
 					<span class="relative z-10 flex items-center gap-2">
-						{#if category === 'Makanan'}
+						{#if category === 'Makanan Utama'}
 							<span class="material-symbols-outlined text-sm">lunch_dining</span>
 						{:else if category === 'Cemilan'}
 							<span class="material-symbols-outlined text-sm">cookie</span>
@@ -75,6 +130,19 @@
 				</button>
 			{/each}
 		</div>
+
+		<!-- Admin Add Button -->
+		{#if $isEditMode && isAdmin}
+			<div class="mb-8 flex justify-end">
+				<button
+					onclick={openAddModal}
+					class="flex items-center gap-2 rounded-full bg-green-600 px-6 py-3 font-bold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:bg-green-700"
+				>
+					<span class="material-symbols-outlined">add</span>
+					Tambah Menu
+				</button>
+			</div>
+		{/if}
 
 		<!-- Results Count -->
 		<div class="mb-8 flex items-center justify-between">
@@ -88,11 +156,31 @@
 
 		<!-- Menu Items Grid -->
 		<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-			{#each filteredItems as item}
+			{#each filteredItems as item (item.id)}
 				<div
 					class="group relative overflow-hidden rounded-2xl bg-white shadow-md transition-all duration-300 hover:shadow-xl hover:shadow-red-700/10 hover:-translate-y-1 cursor-pointer"
 					onclick={() => openDetail(item)}
 				>
+					<!-- Admin Edit/Delete Buttons -->
+					{#if $isEditMode && isAdmin}
+						<div class="absolute top-2 right-2 z-10 flex gap-1">
+							<button
+								onclick={(e) => { e.stopPropagation(); openEditModal(item); }}
+								class="flex h-8 w-8 items-center justify-center rounded-full bg-amber-500 text-white shadow-lg hover:bg-amber-600"
+								aria-label="Edit"
+							>
+								<span class="material-symbols-outlined text-sm">edit</span>
+							</button>
+							<button
+								onclick={(e) => { e.stopPropagation(); deleteItem(item.id); }}
+								class="flex h-8 w-8 items-center justify-center rounded-full bg-red-600 text-white shadow-lg hover:bg-red-700"
+								aria-label="Delete"
+							>
+								<span class="material-symbols-outlined text-sm">delete</span>
+							</button>
+						</div>
+					{/if}
+
 					<!-- Image Container -->
 					<div class="relative h-52 w-full overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200">
 						<img
@@ -101,11 +189,9 @@
 							src={item.image}
 							loading="lazy"
 						/>
-						<!-- Overlay Gradient -->
 						<div
 							class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
 						></div>
-						<!-- Badge -->
 						{#if item.badge}
 							<span
 								class="absolute top-4 left-4 inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 px-3 py-1.5 text-xs font-bold uppercase text-white shadow-lg"
@@ -114,27 +200,14 @@
 								{item.badge}
 							</span>
 						{/if}
-						<!-- View Detail Button -->
-						<button
-							class="absolute bottom-4 right-4 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-red-700 shadow-lg opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:scale-100 scale-75 hover:bg-red-700 hover:text-white"
-							aria-label="Lihat detail"
-							onclick={(e) => {
-								e.stopPropagation();
-								openDetail(item);
-							}}
-						>
-							<span class="material-symbols-outlined text-lg">visibility</span>
-						</button>
 					</div>
 
 					<!-- Content -->
 					<div class="p-5">
 						<h3 class="mb-2 text-lg font-bold text-gray-900 line-clamp-1">{item.name}</h3>
-
 						{#if item.description}
 							<p class="mb-3 text-sm text-gray-600 line-clamp-2">{item.description}</p>
 						{/if}
-
 						<div class="flex items-center justify-between">
 							<span class="text-xl font-black text-red-700">{formatPrice(item.price)}</span>
 							<span class="text-xs text-gray-500">Klik untuk detail</span>
@@ -147,9 +220,7 @@
 		<!-- Empty State -->
 		{#if filteredItems.length === 0}
 			<div class="flex flex-col items-center justify-center py-20">
-				<div
-					class="mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-red-100"
-				>
+				<div class="mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-red-100">
 					<span class="material-symbols-outlined text-4xl text-red-700">restaurant</span>
 				</div>
 				<p class="mb-2 text-xl font-bold text-gray-900">Menu Tidak Tersedia</p>
@@ -171,7 +242,6 @@
 				class="relative my-auto w-full max-w-4xl overflow-hidden rounded-[32px] bg-white shadow-2xl animate-scale-in"
 				onclick={(e) => e.stopPropagation()}
 			>
-				<!-- Close Button -->
 				<button
 					onclick={closeDetail}
 					class="absolute right-5 top-5 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-white/95 text-gray-700 shadow-lg backdrop-blur-sm transition-all duration-300 hover:bg-red-700 hover:text-white hover:scale-110 hover:shadow-xl"
@@ -181,25 +251,17 @@
 				</button>
 
 				<div class="grid grid-cols-1 md:grid-cols-2">
-					<!-- Image Section -->
 					<div class="relative h-56 w-full overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 md:h-full">
-						<img
-							alt={selectedItem.name}
-							class="h-full w-full object-cover"
-							src={selectedItem.image}
-						/>
+						<img alt={selectedItem.name} class="h-full w-full object-cover" src={selectedItem.image} />
 						<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent md:bg-gradient-to-r"></div>
 						{#if selectedItem.badge}
 							<div class="absolute top-5 left-5">
-								<span
-									class="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 px-4 py-2 text-xs font-bold uppercase tracking-wider text-white shadow-lg shadow-amber-500/30"
-								>
+								<span class="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 px-4 py-2 text-xs font-bold uppercase tracking-wider text-white shadow-lg shadow-amber-500/30">
 									<span class="material-symbols-outlined text-sm">star</span>
 									{selectedItem.badge}
 								</span>
 							</div>
 						{/if}
-						<!-- Category Badge -->
 						<div class="absolute bottom-5 left-5">
 							<span class="inline-flex items-center gap-2 rounded-full bg-white/95 px-4 py-2 text-xs font-bold uppercase tracking-wider text-gray-900 shadow-lg backdrop-blur-sm">
 								<span class="material-symbols-outlined text-sm text-red-700">restaurant_menu</span>
@@ -208,9 +270,7 @@
 						</div>
 					</div>
 
-					<!-- Content Section -->
 					<div class="flex flex-col overflow-y-auto p-6 md:p-10" style="max-height: calc(100vh - 120px);">
-						<!-- Title & Price -->
 						<div class="mb-8">
 							<h2 class="mb-3 text-2xl font-bold leading-tight text-gray-900 md:text-3xl">
 								{selectedItem.name}
@@ -222,16 +282,13 @@
 							</div>
 						</div>
 
-						<!-- Description -->
 						{#if selectedItem.description}
 							<div class="mb-8">
 								<h3 class="mb-3 flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-gray-500">
 									<span class="material-symbols-outlined text-lg text-red-700">description</span>
 									Deskripsi
 								</h3>
-								<p class="text-base leading-relaxed text-gray-700">
-									{selectedItem.description}
-								</p>
+								<p class="text-base leading-relaxed text-gray-700">{selectedItem.description}</p>
 							</div>
 						{:else}
 							<div class="mb-8">
@@ -241,51 +298,38 @@
 							</div>
 						{/if}
 
-						<!-- Features -->
 						<div class="mb-8">
-							<h3 class="mb-4 text-sm font-bold uppercase tracking-wider text-gray-500">
-								Keunggulan
-							</h3>
+							<h3 class="mb-4 text-sm font-bold uppercase tracking-wider text-gray-500">Keunggulan</h3>
 							<div class="grid grid-cols-2 gap-3">
 								<div class="flex items-center gap-3 rounded-xl bg-green-50 p-3 transition-colors hover:bg-green-100">
 									<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-green-100">
-										<span class="material-symbols-outlined text-sm text-green-700">
-											verified
-										</span>
+										<span class="material-symbols-outlined text-sm text-green-700">verified</span>
 									</div>
 									<span class="text-sm font-semibold text-green-800">100% Halal</span>
 								</div>
 								<div class="flex items-center gap-3 rounded-xl bg-red-50 p-3 transition-colors hover:bg-red-100">
 									<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-red-100">
-										<span class="material-symbols-outlined text-sm text-red-700">
-											local_fire_department
-										</span>
+										<span class="material-symbols-outlined text-sm text-red-700">local_fire_department</span>
 									</div>
 									<span class="text-sm font-semibold text-red-800">Bumbu Segar</span>
 								</div>
 								<div class="flex items-center gap-3 rounded-xl bg-amber-50 p-3 transition-colors hover:bg-amber-100">
 									<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-amber-100">
-										<span class="material-symbols-outlined text-sm text-amber-700">
-											restaurant
-										</span>
+										<span class="material-symbols-outlined text-sm text-amber-700">restaurant</span>
 									</div>
 									<span class="text-sm font-semibold text-amber-800">Resep Asli</span>
 								</div>
 								<div class="flex items-center gap-3 rounded-xl bg-blue-50 p-3 transition-colors hover:bg-blue-100">
 									<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-100">
-										<span class="material-symbols-outlined text-sm text-blue-700">
-											delivery_dining
-										</span>
+										<span class="material-symbols-outlined text-sm text-blue-700">delivery_dining</span>
 									</div>
 									<span class="text-sm font-semibold text-blue-800">Siap Diantar</span>
 								</div>
 							</div>
 						</div>
 
-						<!-- Spacer -->
 						<div class="flex-1"></div>
 
-						<!-- CTA Buttons -->
 						<div class="mt-6 space-y-3">
 							<a
 								href="https://wa.me/62812345678?text={encodeURIComponent(`Halo Warung Badiduud, saya ingin memesan ${selectedItem.name} seharga ${formatPrice(selectedItem.price)}. Apakah tersedia?`)}"
@@ -293,12 +337,20 @@
 								rel="noopener noreferrer"
 								class="group flex items-center justify-center gap-3 rounded-2xl bg-gradient-to-r from-green-600 to-green-700 py-4 font-bold text-white shadow-lg shadow-green-700/30 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-green-700/40 hover:from-green-700 hover:to-green-800"
 							>
-								<span class="material-symbols-outlined transition-transform duration-300 group-hover:scale-110">
-									chat
-								</span>
+								<span class="material-symbols-outlined transition-transform duration-300 group-hover:scale-110">chat</span>
 								<span>Pesan via WhatsApp</span>
 							</a>
-							
+
+							{#if $isEditMode && isAdmin}
+								<button
+									onclick={() => openEditModal(selectedItem)}
+									class="flex w-full items-center justify-center gap-2 rounded-2xl bg-amber-500 py-2 px-4 font-bold text-white transition-all duration-300 hover:bg-amber-600"
+								>
+									<span class="material-symbols-outlined">edit</span>
+									<span>Edit Menu Ini</span>
+								</button>
+							{/if}
+
 							<button
 								onclick={closeDetail}
 								class="flex items-center justify-center gap-2 rounded-2xl border-2 border-gray-200 py-2 px-4 font-bold text-gray-700 transition-all duration-300 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-900"
@@ -308,7 +360,6 @@
 							</button>
 						</div>
 
-						<!-- Info Note -->
 						<div class="mt-5 flex items-start gap-3 rounded-2xl bg-gradient-to-r from-amber-50 to-orange-50 p-4">
 							<span class="material-symbols-outlined mt-0.5 text-amber-700">info</span>
 							<p class="text-sm leading-relaxed text-amber-900">
@@ -317,6 +368,74 @@
 							</p>
 						</div>
 					</div>
+				</div>
+			</div>
+		</div>
+	{/if}
+
+	<!-- Edit/Add Menu Item Modal -->
+	{#if showEditModal && editingItem}
+		<div
+			class="fixed inset-0 z-[60] flex items-center justify-center bg-black/60 p-4 backdrop-blur-md"
+			onclick={closeEditModal}
+			role="dialog"
+			aria-modal="true"
+		>
+			<div
+				class="w-full max-w-lg overflow-hidden rounded-3xl bg-white shadow-2xl"
+				onclick={(e) => e.stopPropagation()}
+			>
+				<div class="bg-gradient-to-r from-red-600 to-red-700 px-6 py-5">
+					<h2 class="text-xl font-bold text-white">
+						{isNewItem ? 'Tambah Menu Baru' : 'Edit Menu'}
+					</h2>
+				</div>
+
+				<div class="max-h-[60vh] overflow-y-auto p-6">
+					<div class="space-y-4">
+						<div>
+							<label for="edit-name" class="mb-1 block text-sm font-semibold text-gray-700">Nama</label>
+							<input id="edit-name" type="text" bind:value={editingItem.name}
+								class="w-full rounded-xl border-2 border-gray-200 px-4 py-3 focus:border-red-500 focus:outline-none" />
+						</div>
+						<div>
+							<label for="edit-desc" class="mb-1 block text-sm font-semibold text-gray-700">Deskripsi</label>
+							<textarea id="edit-desc" bind:value={editingItem.description} rows="2"
+								class="w-full rounded-xl border-2 border-gray-200 px-4 py-3 focus:border-red-500 focus:outline-none"></textarea>
+						</div>
+						<div>
+							<label for="edit-price" class="mb-1 block text-sm font-semibold text-gray-700">Harga (Rp)</label>
+							<input id="edit-price" type="number" bind:value={editingItem.price}
+								class="w-full rounded-xl border-2 border-gray-200 px-4 py-3 focus:border-red-500 focus:outline-none" />
+						</div>
+						<div>
+							<label for="edit-image" class="mb-1 block text-sm font-semibold text-gray-700">Image URL / Path</label>
+							<input id="edit-image" type="text" bind:value={editingItem.image}
+								class="w-full rounded-xl border-2 border-gray-200 px-4 py-3 focus:border-red-500 focus:outline-none" />
+						</div>
+						<div>
+							<label for="edit-category" class="mb-1 block text-sm font-semibold text-gray-700">Kategori</label>
+							<input id="edit-category" type="text" bind:value={editingItem.category}
+								class="w-full rounded-xl border-2 border-gray-200 px-4 py-3 focus:border-red-500 focus:outline-none" />
+						</div>
+						<div>
+							<label for="edit-badge" class="mb-1 block text-sm font-semibold text-gray-700">Badge (opsional)</label>
+							<input id="edit-badge" type="text" bind:value={editingItem.badge}
+								class="w-full rounded-xl border-2 border-gray-200 px-4 py-3 focus:border-red-500 focus:outline-none"
+								placeholder="e.g. Best Seller" />
+						</div>
+					</div>
+				</div>
+
+				<div class="flex gap-3 border-t border-gray-100 px-6 py-4">
+					<button onclick={closeEditModal}
+						class="flex-1 rounded-xl border-2 border-gray-200 py-3 font-bold text-gray-700 hover:bg-gray-50">
+						Batal
+					</button>
+					<button onclick={saveItem}
+						class="flex-1 rounded-xl bg-gradient-to-r from-red-600 to-red-700 py-3 font-bold text-white shadow-lg hover:scale-[1.02]">
+						{isNewItem ? 'Tambah' : 'Simpan'}
+					</button>
 				</div>
 			</div>
 		</div>
@@ -338,41 +457,13 @@
 		animation: scaleIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 	}
 
-	:global(.overflow-y-auto::-webkit-scrollbar) {
-		width: 8px;
-	}
-
-	:global(.overflow-y-auto::-webkit-scrollbar-track) {
-		background: #f1f1f1;
-		border-radius: 4px;
-	}
-
-	:global(.overflow-y-auto::-webkit-scrollbar-thumb) {
-		background: #c1c1c1;
-		border-radius: 4px;
-	}
-
-	:global(.overflow-y-auto::-webkit-scrollbar-thumb:hover) {
-		background: #a1a1a1;
-	}
-
 	@keyframes fadeIn {
-		from {
-			opacity: 0;
-		}
-		to {
-			opacity: 1;
-		}
+		from { opacity: 0; }
+		to { opacity: 1; }
 	}
 
 	@keyframes scaleIn {
-		from {
-			opacity: 0;
-			transform: scale(0.95) translateY(10px);
-		}
-		to {
-			opacity: 1;
-			transform: scale(1) translateY(0);
-		}
+		from { opacity: 0; transform: scale(0.95) translateY(10px); }
+		to { opacity: 1; transform: scale(1) translateY(0); }
 	}
 </style>

@@ -5,11 +5,13 @@
 	import MenuSection from '$lib/components/MenuSection.svelte';
 	import StorySection from '$lib/components/StorySection.svelte';
 	import Footer from '$lib/components/Footer.svelte';
+
+	let { data } = $props();
 </script>
 
 <Header />
-<HeroCarousel />
-<FeaturesSection />
-<MenuSection />
-<StorySection />
+<HeroCarousel slides={data.heroSlides} />
+<FeaturesSection features={data.features} />
+<MenuSection menuItems={data.featuredMenuItems} />
+<StorySection story={data.story} />
 <Footer />

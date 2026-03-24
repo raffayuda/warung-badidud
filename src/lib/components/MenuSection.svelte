@@ -1,5 +1,16 @@
 <script>
-	import { menuItems } from '$lib/data/menu.js';
+	import { isEditMode } from '$lib/stores/adminStore.js';
+	import { page } from '$app/stores';
+
+	/** @type {{ menuItems: any[] }} */
+	let { menuItems } = $props();
+
+	const isAdmin = $derived($page.data?.isAdmin ?? false);
+
+	const formatPrice = (/** @type {number} */ price) => {
+		if (typeof price === 'string') return price;
+		return `Rp ${Math.round(price / 1000)}k`;
+	};
 </script>
 
 <!-- Menu Products Section -->
@@ -46,7 +57,9 @@
 						<p class="mb-4 line-clamp-2 text-xs text-gray-600">{item.description}</p>
 
 						<div class="flex items-center justify-between">
-							<span class="text-xl font-bold tracking-tight text-red-700">{item.price}</span>
+							<span class="text-xl font-bold tracking-tight text-red-700">
+								{item.priceFormatted ?? formatPrice(item.price)}
+							</span>
 						</div>
 					</div>
 				</div>

@@ -1,5 +1,43 @@
 <script>
-	// About/Story section with image and founder quote
+	import { isEditMode } from '$lib/stores/adminStore.js';
+	import { page } from '$app/stores';
+	import EditableText from './EditableText.svelte';
+	import { invalidateAll } from '$app/navigation';
+
+	/** @type {{ story: any }} */
+	let { story } = $props();
+
+	const isAdmin = $derived($page.data?.isAdmin ?? false);
+
+	const storyData = $derived(story ?? {
+		title: 'Dari Dapur Kecil Menuju',
+		titleHighlight: 'Hati Indonesia',
+		paragraphs: [],
+		quote: '',
+		quoteAuthor: '',
+		image: ''
+	});
+
+	async function saveStory(updated) {
+		await fetch('/api/content/site', {
+			method: 'PUT',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({ key: 'story', value: updated })
+		});
+		await invalidateAll();
+	}
+
+	function updateField(field, value) {
+		const updated = { ...storyData, [field]: value };
+		saveStory(updated);
+	}
+
+	function updateParagraph(index, value) {
+		const paragraphs = [...storyData.paragraphs];
+		paragraphs[index] = value;
+		const updated = { ...storyData, paragraphs };
+		saveStory(updated);
+	}
 </script>
 
 <!-- Editorial Story Section -->
@@ -14,39 +52,85 @@
 				<img
 					alt="Cook"
 					class="relative z-10 h-[600px] w-full rounded-3xl object-cover shadow-2xl"
-					src="https://lh3.googleusercontent.com/aida-public/AB6AXuCE9r5qUczq0cDy6IdzzPLOco-FWkjTsGb0Yr3jL4ZijuH-LCeDoNnXPGud1GYYrkrASEW1wjHpQSXXwS9qP7b84yYcNoZy8OopPPkgBZ7CEwOJWxW6BmcSf-UzdnvQnGT62Ke0mR3CCDf_TA9WCotoZkKoQNZv9WOWxXRTksUXAswQdsJgv0b4ZVoh0cD2vMW1A9eTyXyAyqZjRCkLUVjDesrIpC1STR3D2SanqaJ52JwWtWsmDV7is3P08tgNEYyQQ1gDsjR2fHg"
+					src={storyData.image}
 				/>
 
+				{#if $isEditMode && isAdmin}
+					<div class="relative z-20 mt-2">
+						<input
+							type="text"
+							value={storyData.image}
+							onchange={(e) => updateField('image', e.target.value)}
+							class="w-full rounded-lg border-2 border-amber-400 bg-amber-50 px-3 py-2 text-xs"
+							placeholder="Image URL"
+						/>
+					</div>
+				{/if}
+
 				<div class="absolute -bottom-6 -right-6 z-20 max-w-xs rounded-2xl bg-red-700 p-8 text-white shadow-2xl">
-					<p class="mb-4 text-lg italic">
-						"Citarasa bukan sekedar bumbu, tapi tentang rasa syukur dalam setiap suapan."
-					</p>
-					<p class="text-sm font-bold">— Founder Ayam Juara</p>
+					{#if $isEditMode && isAdmin}
+						<EditableText
+							value={storyData.quote}
+							tag="p"
+							className="mb-4 text-lg italic text-white"
+							onSave={(v) => updateField('quote', v)}
+						/>
+						<EditableText
+							value={storyData.quoteAuthor}
+							tag="p"
+							className="text-sm font-bold text-white"
+							onSave={(v) => updateField('quoteAuthor', v)}
+						/>
+					{:else}
+						<p class="mb-4 text-lg italic">
+							"{storyData.quote}"
+						</p>
+						<p class="text-sm font-bold">{storyData.quoteAuthor}</p>
+					{/if}
 				</div>
 			</div>
 
 			<div class="flex flex-col gap-8">
 				<h2 class="text-5xl font-extrabold leading-tight">
-					Dari Dapur Kecil Menuju <span class="italic text-red-600">Hati Indonesia</span>
+					{#if $isEditMode && isAdmin}
+						<EditableText
+							value={storyData.title}
+							tag="span"
+							className="text-5xl font-extrabold"
+							onSave={(v) => updateField('title', v)}
+						/>
+						{' '}
+						<span class="italic text-red-600">
+							<EditableText
+								value={storyData.titleHighlight}
+								tag="span"
+								className="text-5xl font-extrabold italic text-red-600"
+								onSave={(v) => updateField('titleHighlight', v)}
+							/>
+						</span>
+					{:else}
+						{storyData.title} <span class="italic text-red-600">{storyData.titleHighlight}</span>
+					{/if}
 				</h2>
 
 				<div class="space-y-6 leading-relaxed text-gray-700">
-					<p>
-						Perjalanan Ayam Juara dimulai dari kecintaan kami terhadap kuliner nusantara yang otentik.
-						Kami percaya bahwa ayam goreng yang lezat lahir dari bahan-bahan berkualitas tinggi dan
-						kesabaran dalam proses memasaknya.
-					</p>
-
-					<p>
-						Setiap cabang kami membawa semangat UMKM untuk terus bertumbuh, merangkul masyarakat
-						sekitar, dan memberikan kebahagiaan melalui hidangan yang kami sajikan. Kami tidak hanya
-						menjual makanan, kami menyajikan cerita perjuangan dan kehangatan keluarga.
-					</p>
+					{#each storyData.paragraphs as paragraph, index}
+						{#if $isEditMode && isAdmin}
+							<EditableText
+								value={paragraph}
+								tag="p"
+								className="leading-relaxed text-gray-700"
+								onSave={(v) => updateParagraph(index, v)}
+							/>
+						{:else}
+							<p>{paragraph}</p>
+						{/if}
+					{/each}
 				</div>
 
 				<div class="pt-4">
 					<a
-						href="https://maps.google.com"
+						href="/lokasi"
 						class="inline-block rounded-full bg-orange-100 px-10 py-4 font-bold text-orange-900 transition-colors hover:bg-orange-200"
 					>
 						Kunjungi Kami
