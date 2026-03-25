@@ -23,7 +23,7 @@ vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 
 # Uploads
-static/uploads
+# static/uploads
 
 # Temp
 *.txt
