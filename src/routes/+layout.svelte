@@ -1,7 +1,7 @@
 <script>
 	import './layout.css';
 	import { navigating } from '$app/stores';
-	import favicon from '$lib/assets/favicon.svg';
+	import favicon from '$lib/assets/logo.png';
 	import AdminToolbar from '$lib/components/AdminToolbar.svelte';
 	import SplashScreen from '$lib/components/SplashScreen.svelte';
 
