@@ -57,11 +57,48 @@
 </script>
 
 <svelte:head>
-	<title>Tentang Kami - Warung Badiduud</title>
-	<meta
-		name="description"
-		content="Kenali lebih dekat Warung Badiduud - Cerita di balik Ayam Juara dengan cita rasa nusantara yang autentik."
-	/>
+	<title>Tentang Kami - Warung Badidud | Cerita Dibalik Kelezatan Ayam Nusantara</title>
+	<meta name="description" content="Kenali lebih dekat Warung Badidud - Cerita di balik ayam geprek dengan cita rasa nusantara yang autentik. Komitmen kami menghadirkan makanan berkualitas untuk keluarga Indonesia." />
+	<meta name="keywords" content="tentang warung badidud, cerita warung badidud, sejarah ayam geprek, makanan nusantara, kuliner indonesia, warung makan enak" />
+	<meta name="author" content="Warung Badidud" />
+	<meta name="robots" content="index, follow" />
+	
+	<!-- Open Graph / Facebook -->
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://warungbadidud.com/tentang" />
+	<meta property="og:title" content="Tentang Kami - Warung Badidud" />
+	<meta property="og:description" content="Kenali lebih dekat Warung Badidud - Cerita di balik ayam geprek dengan cita rasa nusantara yang autentik." />
+	<meta property="og:image" content="https://warungbadidud.com/og-image.jpg" />
+	
+	<!-- Twitter -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:url" content="https://warungbadidud.com/tentang" />
+	<meta name="twitter:title" content="Tentang Kami - Warung Badidud" />
+	<meta name="twitter:description" content="Kenali lebih dekat Warung Badidud - Cerita di balik ayam geprek dengan cita rasa nusantara yang autentik." />
+	<meta name="twitter:image" content="https://warungbadidud.com/og-image.jpg" />
+	
+	<!-- Canonical URL -->
+	<link rel="canonical" href="https://warungbadidud.com/tentang" />
+	
+	<!-- Structured Data - Organization -->
+	<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "Organization",
+			"name": "Warung Badidud",
+			"description": "Warung makan yang menyajikan ayam geprek dan makanan nusantara dengan cita rasa autentik sejak 2020",
+			"url": "https://warungbadidud.com",
+			"logo": "https://warungbadidud.com/logo.png",
+			"foundingDate": "2020",
+			"founders": [{
+				"@type": "Person",
+				"name": "Pendiri Warung Badidud"
+			}],
+			"sameAs": [
+				"https://wa.me/62812345678"
+			]
+		}
+	</script>
 </svelte:head>
 
 <Header />

@@ -7,7 +7,9 @@
 </script>
 
 <svelte:head>
-	<title>Login Admin - Warung Badiduud</title>
+	<title>Login Admin - Warung Badidud</title>
+	<meta name="robots" content="noindex, nofollow" />
+	<meta name="googlebot" content="noindex" />
 </svelte:head>
 
 <Header />

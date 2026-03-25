@@ -33,11 +33,61 @@
 </script>
 
 <svelte:head>
-	<title>Lokasi Kami - Waroeng Badidud</title>
-	<meta
-		name="description"
-		content="Temukan lokasi Waroeng Badidud terdekat. Kunjungi outlet kami dan nikmati ayam goreng lezat dengan cita rasa nusantara."
-	/>
+	<title>Lokasi Kami - Warung Badidud | Alamat & Jam Operasional</title>
+	<meta name="description" content="Temukan lokasi Warung Badidud terdekat. Lihat alamat, jam operasional, dan layanan pengiriman kami. Kunjungi outlet kami dan nikmati ayam geprek lezat!" />
+	<meta name="keywords" content="lokasi warung badidud, alamat warung badidud, jam buka warung badidud, delivery warung badidud, ayam geprek terdekat, warung makan terdekat" />
+	<meta name="author" content="Warung Badidud" />
+	<meta name="robots" content="index, follow" />
+	
+	<!-- Open Graph / Facebook -->
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://warungbadidud.com/lokasi" />
+	<meta property="og:title" content="Lokasi Kami - Warung Badidud" />
+	<meta property="og:description" content="Temukan lokasi Warung Badidud terdekat. Lihat alamat, jam operasional, dan layanan pengiriman kami." />
+	<meta property="og:image" content="https://warungbadidud.com/og-image.jpg" />
+	
+	<!-- Twitter -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:url" content="https://warungbadidud.com/lokasi" />
+	<meta name="twitter:title" content="Lokasi Kami - Warung Badidud" />
+	<meta name="twitter:description" content="Temukan lokasi Warung Badidud terdekat. Lihat alamat, jam operasional, dan layanan pengiriman kami." />
+	<meta name="twitter:image" content="https://warungbadidud.com/og-image.jpg" />
+	
+	<!-- Canonical URL -->
+	<link rel="canonical" href="https://warungbadidud.com/lokasi" />
+	
+	<!-- Structured Data - LocalBusiness with Geo -->
+	<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "Restaurant",
+			"name": "Warung Badidud",
+			"description": "Warung makan yang menyajikan ayam geprek dan makanan nusantara dengan cita rasa autentik",
+			"url": "https://warungbadidud.com",
+			"telephone": "+62-812-345-678",
+			"priceRange": "Rp",
+			"servesCuisine": "Indonesian",
+			"address": {
+				"@type": "PostalAddress",
+				"addressCountry": "ID",
+				"addressLocality": "Indonesia"
+			},
+			"geo": {
+				"@type": "GeoCoordinates",
+				"latitude": "-6.575556",
+				"longitude": "106.739886"
+			},
+			"openingHoursSpecification": {
+				"@type": "OpeningHoursSpecification",
+				"dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+				"opens": "10:00",
+				"closes": "22:00"
+			},
+			"hasMap": "https://www.google.com/maps/place/Waroeng+Badidud",
+			"acceptsReservations": "False",
+			"deliveryAvailable": "True"
+		}
+	</script>
 </svelte:head>
 
 <div class="min-h-screen bg-gradient-to-b from-gray-50 to-white">

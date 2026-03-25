@@ -124,7 +124,68 @@
 />
 
 <svelte:head>
-	<title>Daftar Menu - Warung Badiduud</title>
+	<title>Daftar Menu - Warung Badidud | Ayam Geprek, Paket Hemat & Cemilan Enak</title>
+	<meta name="description" content="Lihat daftar menu Warung Badidud: ayam geprek, paket hemat, rice bowl, dan cemilan dengan harga terjangkau. Bahan berkualitas, rasa autentik nusantara!" />
+	<meta name="keywords" content="menu warung badidud, ayam geprek murah, paket hemat enak, rice bowl indonesia, cemilan nusantara, daftar menu makanan, harga ayam geprek" />
+	<meta name="author" content="Warung Badidud" />
+	<meta name="robots" content="index, follow" />
+	
+	<!-- Open Graph / Facebook -->
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://warungbadidud.com/menu" />
+	<meta property="og:title" content="Daftar Menu - Warung Badidud" />
+	<meta property="og:description" content="Lihat daftar menu Warung Badidud: ayam geprek, paket hemat, rice bowl, dan cemilan dengan harga terjangkau." />
+	<meta property="og:image" content="https://warungbadidud.com/og-image.jpg" />
+	
+	<!-- Twitter -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:url" content="https://warungbadidud.com/menu" />
+	<meta name="twitter:title" content="Daftar Menu - Warung Badidud" />
+	<meta name="twitter:description" content="Lihat daftar menu Warung Badidud: ayam geprek, paket hemat, rice bowl, dan cemilan dengan harga terjangkau." />
+	<meta name="twitter:image" content="https://warungbadidud.com/og-image.jpg" />
+	
+	<!-- Canonical URL -->
+	<link rel="canonical" href="https://warungbadidud.com/menu" />
+	
+	<!-- Structured Data - Menu -->
+	<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "Menu",
+			"name": "Menu Warung Badidud",
+			"description": "Daftar menu lengkap Warung Badidud dengan ayam geprek, paket hemat, rice bowl, dan cemilan",
+			"url": "https://warungbadidud.com/menu",
+			"hasMenuSection": [
+				{
+					"@type": "MenuSection",
+					"name": "Makanan Utama",
+					"hasMenuItem": [
+						{
+							"@type": "MenuItem",
+							"name": "Ayam Geprek",
+							"description": "Ayam goreng crispy dengan sambal geprek pedas nusantara",
+							"offers": {
+								"@type": "Offer",
+								"priceCurrency": "IDR",
+								"price": "15000"
+							}
+						}
+					]
+				},
+				{
+					"@type": "MenuSection",
+					"name": "Cemilan",
+					"hasMenuItem": [
+						{
+							"@type": "MenuItem",
+							"name": "Cemilan Nusantara",
+							"description": "Aneka cemilan tradisional Indonesia"
+						}
+					]
+				}
+			]
+		}
+	</script>
 </svelte:head>
 
 <Header />

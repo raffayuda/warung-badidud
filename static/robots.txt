@@ -1,3 +1,14 @@
-# allow crawling everything by default
+# Robots.txt untuk Warung Badidud
+# https://warungbadidud.com/robots.txt
+
 User-agent: *
-Disallow:
+Allow: /
+
+# Sitemap
+Sitemap: https://warungbadidud.com/sitemap.xml
+
+# Crawl-delay (opsional, untuk membatasi request)
+Crawl-delay: 1
+
+# Jangan index halaman admin
+Disallow: /login
