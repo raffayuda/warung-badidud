@@ -41,20 +41,20 @@
 	
 	<!-- Open Graph / Facebook -->
 	<meta property="og:type" content="website" />
-	<meta property="og:url" content="https://warungbadidud.com/lokasi" />
+	<meta property="og:url" content="https://badidiud.boday.my.id/lokasi" />
 	<meta property="og:title" content="Lokasi Kami - Warung Badidud" />
 	<meta property="og:description" content="Temukan lokasi Warung Badidud terdekat. Lihat alamat, jam operasional, dan layanan pengiriman kami." />
-	<meta property="og:image" content="https://warungbadidud.com/og-image.jpg" />
+	<meta property="og:image" content="https://badidiud.boday.my.id/og-image.jpg" />
 	
 	<!-- Twitter -->
 	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:url" content="https://warungbadidud.com/lokasi" />
+	<meta name="twitter:url" content="https://badidiud.boday.my.id/lokasi" />
 	<meta name="twitter:title" content="Lokasi Kami - Warung Badidud" />
 	<meta name="twitter:description" content="Temukan lokasi Warung Badidud terdekat. Lihat alamat, jam operasional, dan layanan pengiriman kami." />
-	<meta name="twitter:image" content="https://warungbadidud.com/og-image.jpg" />
+	<meta name="twitter:image" content="https://badidiud.boday.my.id/og-image.jpg" />
 	
 	<!-- Canonical URL -->
-	<link rel="canonical" href="https://warungbadidud.com/lokasi" />
+	<link rel="canonical" href="https://badidiud.boday.my.id/lokasi" />
 	
 	<!-- Structured Data - LocalBusiness with Geo -->
 	<script type="application/ld+json">
@@ -63,7 +63,7 @@
 			"@type": "Restaurant",
 			"name": "Warung Badidud",
 			"description": "Warung makan yang menyajikan ayam geprek dan makanan nusantara dengan cita rasa autentik",
-			"url": "https://warungbadidud.com",
+			"url": "https://badidiud.boday.my.id/lokasi",
 			"telephone": "+62-812-345-678",
 			"priceRange": "Rp",
 			"servesCuisine": "Indonesian",

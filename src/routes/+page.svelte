@@ -18,20 +18,20 @@
 	
 	<!-- Open Graph / Facebook -->
 	<meta property="og:type" content="website" />
-	<meta property="og:url" content="https://warungbadidud.com/" />
+	<meta property="og:url" content="https://badidiud.boday.my.id/" />
 	<meta property="og:title" content="Warung Badidud - Ayam Geprek & Makanan Nusantara Enak" />
 	<meta property="og:description" content="Warung Badidud menyajikan ayam geprek, paket hemat, rice bowl, dan cemilan dengan cita rasa nusantara autentik." />
-	<meta property="og:image" content="https://warungbadidud.com/og-image.jpg" />
+	<meta property="og:image" content="https://badidiud.boday.my.id/og-image.jpg" />
 	
 	<!-- Twitter -->
 	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:url" content="https://warungbadidud.com/" />
+	<meta name="twitter:url" content="https://badidiud.boday.my.id/" />
 	<meta name="twitter:title" content="Warung Badidud - Ayam Geprek & Makanan Nusantara Enak" />
 	<meta name="twitter:description" content="Warung Badidud menyajikan ayam geprek, paket hemat, rice bowl, dan cemilan dengan cita rasa nusantara autentik." />
-	<meta name="twitter:image" content="https://warungbadidud.com/og-image.jpg" />
+	<meta name="twitter:image" content="https://badidiud.boday.my.id/og-image.jpg" />
 	
 	<!-- Canonical URL -->
-	<link rel="canonical" href="https://warungbadidud.com/" />
+	<link rel="canonical" href="https://badidiud.boday.my.id/" />
 	
 	<!-- Structured Data - LocalBusiness -->
 	<script type="application/ld+json">
@@ -40,9 +40,9 @@
 			"@type": "Restaurant",
 			"name": "Warung Badidud",
 			"description": "Warung makan yang menyajikan ayam geprek dan makanan nusantara dengan cita rasa autentik",
-			"url": "https://warungbadidud.com",
-			"logo": "https://warungbadidud.com/logo.png",
-			"image": "https://warungbadidud.com/og-image.jpg",
+			"url": "https://badidiud.boday.my.id",
+			"logo": "https://badidiud.boday.my.id/logo.png",
+			"image": "https://badidiud.boday.my.id/og-image.jpg",
 			"telephone": "+62-812-345-678",
 			"priceRange": "Rp",
 			"servesCuisine": "Indonesian",
@@ -56,7 +56,7 @@
 				"opens": "10:00",
 				"closes": "22:00"
 			},
-			"menu": "https://warungbadidud.com/menu",
+			"menu": "https://badidiud.boday.my.id/menu",
 			"acceptsReservations": "False"
 		}
 	</script>

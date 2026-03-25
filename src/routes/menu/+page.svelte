@@ -132,20 +132,20 @@
 	
 	<!-- Open Graph / Facebook -->
 	<meta property="og:type" content="website" />
-	<meta property="og:url" content="https://warungbadidud.com/menu" />
+	<meta property="og:url" content="https://badidiud.boday.my.id/menu" />
 	<meta property="og:title" content="Daftar Menu - Warung Badidud" />
 	<meta property="og:description" content="Lihat daftar menu Warung Badidud: ayam geprek, paket hemat, rice bowl, dan cemilan dengan harga terjangkau." />
-	<meta property="og:image" content="https://warungbadidud.com/og-image.jpg" />
+	<meta property="og:image" content="https://badidiud.boday.my.id/og-image.jpg" />
 	
 	<!-- Twitter -->
 	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:url" content="https://warungbadidud.com/menu" />
+	<meta name="twitter:url" content="https://badidiud.boday.my.id/menu" />
 	<meta name="twitter:title" content="Daftar Menu - Warung Badidud" />
 	<meta name="twitter:description" content="Lihat daftar menu Warung Badidud: ayam geprek, paket hemat, rice bowl, dan cemilan dengan harga terjangkau." />
-	<meta name="twitter:image" content="https://warungbadidud.com/og-image.jpg" />
+	<meta name="twitter:image" content="https://badidiud.boday.my.id/og-image.jpg" />
 	
 	<!-- Canonical URL -->
-	<link rel="canonical" href="https://warungbadidud.com/menu" />
+	<link rel="canonical" href="https://badidiud.boday.my.id/menu" />
 	
 	<!-- Structured Data - Menu -->
 	<script type="application/ld+json">
@@ -154,7 +154,7 @@
 			"@type": "Menu",
 			"name": "Menu Warung Badidud",
 			"description": "Daftar menu lengkap Warung Badidud dengan ayam geprek, paket hemat, rice bowl, dan cemilan",
-			"url": "https://warungbadidud.com/menu",
+			"url": "https://badidiud.boday.my.id/menu",
 			"hasMenuSection": [
 				{
 					"@type": "MenuSection",
