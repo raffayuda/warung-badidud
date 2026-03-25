@@ -196,41 +196,6 @@
 			</div>
 		</section>
 
-		<!-- Team Section -->
-		<section class="py-20">
-			<div class="mx-auto max-w-7xl px-6">
-				<div class="mb-16 text-center">
-					<h2 class="mb-4 text-4xl font-bold text-gray-900">Tim Kami</h2>
-					<p class="text-lg text-gray-600 max-w-2xl mx-auto">
-						Orang-orang berbakat di balik kelezatan setiap hidangan
-					</p>
-				</div>
-
-				<div class="grid grid-cols-1 gap-8 md:grid-cols-3">
-					{#each (about.team ?? []) as member, index}
-						<div class="group overflow-hidden rounded-2xl bg-white shadow-md transition-all duration-300 hover:shadow-xl">
-							<div class="relative h-64 overflow-hidden bg-gradient-to-br {colorMap[member.color]?.light ?? 'from-red-100 to-pink-100'}">
-								<div class="absolute inset-0 flex items-center justify-center">
-									<span class="material-symbols-outlined text-8xl {colorMap[member.color]?.icon ?? 'text-red-300'}">person</span>
-								</div>
-							</div>
-							<div class="p-6 text-center">
-								{#if $isEditMode && isAdmin}
-									<EditableText value={member.name} tag="h3" className="text-xl font-bold text-gray-900" onSave={(v) => updateTeam(index, 'name', v)} />
-									<EditableText value={member.role} tag="p" className="text-sm font-medium {colorMap[member.color]?.text ?? 'text-red-700'}" onSave={(v) => updateTeam(index, 'role', v)} />
-									<EditableText value={member.description} tag="p" className="mt-3 text-sm text-gray-600" onSave={(v) => updateTeam(index, 'description', v)} />
-								{:else}
-									<h3 class="text-xl font-bold text-gray-900">{member.name}</h3>
-									<p class="text-sm font-medium {colorMap[member.color]?.text ?? 'text-red-700'}">{member.role}</p>
-									<p class="mt-3 text-sm text-gray-600">{member.description}</p>
-								{/if}
-							</div>
-						</div>
-					{/each}
-				</div>
-			</div>
-		</section>
-
 		<!-- CTA Section -->
 		<section class="bg-gradient-to-r from-red-600 to-red-700 py-20">
 			<div class="mx-auto max-w-4xl px-6 text-center">

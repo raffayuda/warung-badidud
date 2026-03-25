@@ -12,17 +12,17 @@
 			return;
 		}
 
-		// Reduced timing for faster access
-		setTimeout(() => { phase = 'text'; }, 400);
+		// Faster timing for instant access
+		setTimeout(() => { phase = 'text'; }, 200);
 
-		// Fade out after 1s (reduced from 2.2s)
+		// Fade out after 600ms
 		setTimeout(() => {
 			phase = 'done';
 			setTimeout(() => {
 				show = false;
 				sessionStorage.setItem('splash_shown', '1');
-			}, 400);
-		}, 1000);
+			}, 300);
+		}, 600);
 	});
 </script>
 
@@ -71,7 +71,7 @@
 		align-items: center;
 		justify-content: center;
 		background: linear-gradient(135deg, #1a0000 0%, #2d0a0a 30%, #0d0d0d 100%);
-		transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+		transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 		overflow: hidden;
 	}
 

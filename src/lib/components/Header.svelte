@@ -44,6 +44,7 @@
 				{@const isActive = getActiveSection($page.url.pathname) === item.id}
 				<a
 					href={item.href}
+					data-sveltekit-preload-data="hover"
 					class="relative rounded-full px-4 py-2 text-sm font-semibold transition-all duration-300 {isActive
 						? 'bg-white/20 text-white shadow-md'
 						: 'text-red-100 hover:bg-white/10 hover:text-white'}"
@@ -89,6 +90,7 @@
 					{@const isActive = getActiveSection($page.url.pathname) === item.id}
 					<a
 						href={item.href}
+						data-sveltekit-preload-data="hover"
 						onclick={() => (isMenuOpen = false)}
 						class="group flex items-center justify-between rounded-xl px-4 py-3 text-base font-semibold transition-all duration-300 {isActive
 							? 'bg-white/20 text-white shadow-md'
@@ -105,6 +107,7 @@
 				<div class="mt-4 pt-4">
 					<a
 						href="/lokasi"
+						data-sveltekit-preload-data="hover"
 						onclick={() => (isMenuOpen = false)}
 						class="flex items-center justify-center gap-2 rounded-full bg-white py-3 text-sm font-bold text-red-700 shadow-md transition-all duration-300 hover:scale-105"
 					>

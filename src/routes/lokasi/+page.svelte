@@ -24,19 +24,19 @@
 		saveLocation({ ...loc, [field]: value });
 	}
 
-	const heroFeatures = $derived(loc.heroFeatures ?? [
-		{ icon: 'store', label: '1 Lokasi' },
-		{ icon: 'access_time', label: 'Buka Setiap Hari' },
-		{ icon: 'local_shipping', label: 'Gratis Delivery' },
-		{ icon: 'local_parking', label: 'Parkir Luas' }
-	]);
+	// const heroFeatures = $derived(loc.heroFeatures ?? [
+	// 	{ icon: 'store', label: '1 Lokasi' },
+	// 	{ icon: 'access_time', label: 'Buka Setiap Hari' },
+	// 	{ icon: 'local_shipping', label: 'Ongkir' },
+	// 	{ icon: 'local_parking', label: 'Parkir Luas' }
+	// ]);
 </script>
 
 <svelte:head>
-	<title>Lokasi Kami - Warung Badiduud</title>
+	<title>Lokasi Kami - Waroeng Badidud</title>
 	<meta
 		name="description"
-		content="Temukan lokasi Warung Badiduud terdekat. Kunjungi outlet kami dan nikmati ayam goreng lezat dengan cita rasa nusantara."
+		content="Temukan lokasi Waroeng Badidud terdekat. Kunjungi outlet kami dan nikmati ayam goreng lezat dengan cita rasa nusantara."
 	/>
 </svelte:head>
 
@@ -61,17 +61,17 @@
 				</h1>
 
 				<p class="mx-auto max-w-3xl text-lg text-red-100">
-					Kunjungi Warung Badiduud terdekat dan nikmati pengalaman kuliner yang tak terlupakan
+					Kunjungi Waroeng Badidud terdekat dan nikmati pengalaman kuliner yang tak terlupakan
 				</p>
 
-				<div class="mt-12 flex flex-wrap justify-center gap-6">
+				<!-- <div class="mt-12 flex flex-wrap justify-center gap-6">
 					{#each heroFeatures as feature}
 						<div class="flex items-center gap-3 rounded-full bg-white/20 px-5 py-3 backdrop-blur-md">
 							<span class="material-symbols-outlined text-white">{feature.icon}</span>
 							<span class="text-sm font-semibold text-white">{feature.label}</span>
 						</div>
 					{/each}
-				</div>
+				</div> -->
 			</div>
 		</section>
 
@@ -81,7 +81,7 @@
 				<div class="overflow-hidden rounded-3xl bg-gradient-to-br from-gray-200 to-gray-300 shadow-2xl">
 					<div class="relative h-[500px] w-full">
 						<iframe
-							src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.572139324415!2d106.73988630000001!3d-6.575556199999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69c5006574a1d3%3A0x446318eda69f5fd!2sWaroeng%20Badiduud!5e0!3m2!1sid!2sid!4v1774412847298!5m2!1sid!2sid'
+							src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.572139324415!2d106.73988630000001!3d-6.575556199999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69c5006574a1d3%3A0x446318eda69f5fd!2sWaroeng%20Badidud!5e0!3m2!1sid!2sid!4v1774412847298!5m2!1sid!2sid'
 							width="100%"
 							height="100%"
 							style="border:0"
@@ -89,7 +89,7 @@
 							loading="lazy"
 							referrerpolicy="no-referrer-when-downgrade"
 							class="grayscale hover:grayscale-0 transition-all duration-500"
-							title="Peta Lokasi Warung Badiduud"
+							title="Peta Lokasi Waroeng Badidud"
 						></iframe>
 
 						{#if $isEditMode && isAdmin}
@@ -110,7 +110,7 @@
 									<span class="material-symbols-outlined text-red-700">location_on</span>
 								</div>
 								<div>
-									<h3 class="font-bold text-gray-900">{loc.name ?? 'Warung Badiduud'}</h3>
+									<h3 class="font-bold text-gray-900">{loc.name ?? 'Waroeng Badidud'}</h3>
 									{#if $isEditMode && isAdmin}
 										<EditableText value={loc.address ?? ''} tag="p" className="text-sm text-gray-600" onSave={(v) => updateField('address', v)} />
 									{:else}
@@ -139,7 +139,7 @@
 				<div class="mb-12 text-center">
 					<h2 class="mb-4 text-4xl font-bold text-gray-900">Lokasi Kami</h2>
 					<p class="text-lg text-gray-600">
-						Kunjungi warung kami dan nikmati pengalaman kuliner yang tak terlupakan
+						Kunjungi waroeng kami dan nikmati pengalaman kuliner yang tak terlupakan
 					</p>
 				</div>
 
@@ -153,7 +153,7 @@
 								<span class="material-symbols-outlined text-5xl text-white">store</span>
 							</div>
 							<div>
-								<h3 class="text-3xl font-bold text-white">{loc.name ?? 'Warung Badiduud'}</h3>
+								<h3 class="text-3xl font-bold text-white">{loc.name ?? 'Waroeng Badidud'}</h3>
 								<p class="text-red-100">Satu-satunya lokasi resmi kami</p>
 							</div>
 						</div>
@@ -276,7 +276,7 @@
 						<h2 class="mb-6 text-4xl font-bold text-white">Layanan Pengiriman</h2>
 						<p class="mb-8 text-lg text-gray-400">
 							Tidak bisa datang ke outlet? Kami siap antar ke lokasi Anda! Nikmati
-							kelezatan Warung Badiduud dari kenyamanan rumah Anda.
+							kelezatan Waroeng Badidud dari kenyamanan rumah Anda.
 						</p>
 
 						<div class="space-y-4">
@@ -294,8 +294,8 @@
 									<span class="material-symbols-outlined text-white">local_offer</span>
 								</div>
 								<div>
-									<p class="font-bold text-white">Gratis Ongkir</p>
-									<p class="text-sm text-gray-400">Untuk pesanan minimal Rp 50.000</p>
+									<p class="font-bold text-white">Ongkir</p>
+									<p class="text-sm text-gray-400">Biaya pengiriman akan dikenakan sesuai jarak</p>
 								</div>
 							</div>
 							<div class="flex items-center gap-4">
@@ -304,7 +304,7 @@
 								</div>
 								<div>
 									<p class="font-bold text-white">Pesan Online</p>
-									<p class="text-sm text-gray-400">Mudah melalui aplikasi atau WhatsApp</p>
+									<p class="text-sm text-gray-400">Mudah melalui WhatsApp</p>
 								</div>
 							</div>
 						</div>
