@@ -38,6 +38,14 @@
 				{$isEditMode ? 'Exit Edit' : 'Edit Mode'}
 			</button>
 
+			<a
+				href="/admin/profile"
+				class="flex items-center gap-1.5 rounded-full bg-blue-600/80 px-4 py-1.5 text-xs font-bold text-white transition-all duration-200 hover:bg-blue-600"
+			>
+				<span class="material-symbols-outlined text-sm">person</span>
+				Profil
+			</a>
+
 			<button
 				onclick={logout}
 				class="flex items-center gap-1.5 rounded-full bg-red-600/80 px-4 py-1.5 text-xs font-bold text-white transition-all duration-200 hover:bg-red-600"

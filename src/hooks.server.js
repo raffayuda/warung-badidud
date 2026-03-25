@@ -9,7 +9,9 @@ export async function handle({ event, resolve }) {
 		if (admin) {
 			event.locals.admin = {
 				id: admin.id,
-				username: admin.username
+				username: admin.username,
+				name: admin.name,
+				email: admin.email
 			};
 		} else {
 			// Invalid/expired session, clear the cookie
