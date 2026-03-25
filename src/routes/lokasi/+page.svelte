@@ -81,7 +81,7 @@
 				<div class="overflow-hidden rounded-3xl bg-gradient-to-br from-gray-200 to-gray-300 shadow-2xl">
 					<div class="relative h-[500px] w-full">
 						<iframe
-							src={loc.mapEmbedUrl ?? ''}
+							src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.572139324415!2d106.73988630000001!3d-6.575556199999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69c5006574a1d3%3A0x446318eda69f5fd!2sWaroeng%20Badiduud!5e0!3m2!1sid!2sid!4v1774412847298!5m2!1sid!2sid'
 							width="100%"
 							height="100%"
 							style="border:0"
