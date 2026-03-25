@@ -34,7 +34,7 @@
 				<img src="/logo.png" alt="Warung Badidud" class="w-12 transition-transform duration-300 group-hover:scale-110" />
 			</div>
 			<span class="text-xl font-black tracking-tight text-white italic">
-				Warung Badidud
+				Waroeng Badidud
 			</span>
 		</a>
 

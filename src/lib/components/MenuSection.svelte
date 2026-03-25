@@ -159,6 +159,8 @@
 							alt={item.name}
 							class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
 							src={item.image}
+							loading="lazy"
+							decoding="async"
 						/>
 						{#if item.badge}
 							<span

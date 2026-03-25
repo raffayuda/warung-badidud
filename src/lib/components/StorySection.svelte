@@ -88,6 +88,8 @@
 					alt="Cook"
 					class="relative z-10 h-[600px] w-full rounded-3xl object-cover shadow-2xl"
 					src={storyData.image}
+					loading="lazy"
+					decoding="async"
 				/>
 
 				{#if $isEditMode && isAdmin}

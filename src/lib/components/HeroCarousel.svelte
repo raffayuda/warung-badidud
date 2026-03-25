@@ -14,17 +14,35 @@
 	let currentSlide = $state(0);
 	let isAutoPlay = $state(true);
 	let uploading = $state(false);
+	let loadedSlides = $state(new Set());
 
 	/** @type {HTMLInputElement|null} */
 	let fileInputRef = $state(null);
 	let activeUploadIndex = $state(-1);
 
+	function preloadSlide(index) {
+		if (loadedSlides.has(index)) return;
+		const slide = slides[index];
+		if (slide?.image) {
+			const img = new Image();
+			img.src = slide.image;
+			loadedSlides.add(index);
+		}
+	}
+
 	onMount(() => {
+		// Preload first 2 slides immediately
+		preloadSlide(0);
+		if (slides.length > 1) preloadSlide(1);
+
 		let interval;
 		const startAutoPlay = () => {
 			interval = setInterval(() => {
 				if (isAutoPlay && slides.length > 0) {
 					currentSlide = (currentSlide + 1) % slides.length;
+					// Preload next slide
+					const nextIndex = (currentSlide + 1) % slides.length;
+					preloadSlide(nextIndex);
 				}
 			}, 5000);
 		};
@@ -97,13 +115,16 @@
 			{#if index === currentSlide}
 				<div
 					class="absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out"
-					in:fade
-					out:fade
+					in:fade={{ duration: 800 }}
+					out:fade={{ duration: 800 }}
 				>
 					<img
 						alt={slide.title}
 						class="absolute inset-0 h-full w-full object-cover brightness-50"
 						src={slide.image}
+						loading={index === 0 ? 'eager' : 'lazy'}
+						decoding="async"
+						fetchpriority={index === 0 ? 'high' : 'auto'}
 					/>
 					<div class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent"></div>
 

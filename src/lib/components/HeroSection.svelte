@@ -10,6 +10,9 @@
 				alt="Ayam Goreng Premium - Crispy golden fried chicken served on a rustic plate with steam"
 				class="absolute inset-0 h-full w-full object-cover brightness-75"
 				src="https://lh3.googleusercontent.com/aida-public/AB6AXuDndlYRDGBpylCOWmK9Ds7fatODdb0MqBsC7PcrpHUpbbYB339uFQ5bwA1qoN-kS0mzyRu62ZM6YzNsx2tsZjr7kLYfSfDfeJMffV5lIlWavFyXotNO3NZYMzArJG-mn3QDVdJEBn4AaTsMNGR63ESqGeMU5oQowDfBcZKI0viTtFtjX-lpll8h7QwcZK8LSYYZaUB2YliRaLbNHzLZEG1Eo3svmdLGqKaM_Grnu9U38vdaxM1nNjsAg4hlCSXj8h2GO9qvwapfnXU"
+				loading="eager"
+				decoding="async"
+				fetchpriority="high"
 			/>
 			<div class="absolute inset-0 bg-gradient-to-r from-surface via-surface/40 to-transparent"></div>
 		</div>

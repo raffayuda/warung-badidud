@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 
-	let phase = $state('logo'); // 'logo' -> 'text' -> 'done'
+	let phase = $state('logo');
 	let show = $state(true);
 
 	onMount(() => {
@@ -12,18 +12,17 @@
 			return;
 		}
 
-		// Phase 1: Logo animates in (already playing via CSS)
-		// Phase 2: Text appears after 800ms
-		setTimeout(() => { phase = 'text'; }, 800);
+		// Reduced timing for faster access
+		setTimeout(() => { phase = 'text'; }, 400);
 
-		// Phase 3: Fade out after 2.2s
+		// Fade out after 1s (reduced from 2.2s)
 		setTimeout(() => {
 			phase = 'done';
 			setTimeout(() => {
 				show = false;
 				sessionStorage.setItem('splash_shown', '1');
-			}, 600);
-		}, 2200);
+			}, 400);
+		}, 1000);
 	});
 </script>
 

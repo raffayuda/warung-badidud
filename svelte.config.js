@@ -2,10 +2,14 @@ import adapter from '@sveltejs/adapter-vercel';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-	kit: { adapter: adapter() },
-	vitePlugin: {
-		dynamicCompileOptions: ({ filename }) =>
-			filename.includes('node_modules') ? undefined : { runes: true }
+	kit: { 
+		adapter: adapter({
+			// Use edge function for better performance
+			routes: {
+				include: ['/*'],
+				exclude: []
+			}
+		})
 	}
 };
 
