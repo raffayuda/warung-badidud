@@ -242,7 +242,7 @@
 									<div><p class="text-sm font-semibold text-gray-900">Telepon / WhatsApp</p></div>
 								</div>
 								<a
-									href="https://wa.me/{loc.whatsappNumber ?? '62812345678'}"
+									href="https://wa.me/{loc.whatsappNumber ?? '895365453833'}"
 									target="_blank"
 									rel="noopener noreferrer"
 									class="text-lg font-bold text-green-700 hover:underline"
@@ -321,7 +321,7 @@
 		<!-- Delivery Zone Section -->
 		<section class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 py-20">
 			<div class="mx-auto max-w-7xl px-6">
-				<div class="grid grid-cols-1 gap-12 lg:grid-cols-2">
+				<div class="grid grid-cols-1 gap-12 lg:grid-cols-1">
 					<div>
 						<h2 class="mb-6 text-4xl font-bold text-white">Layanan Pengiriman</h2>
 						<p class="mb-8 text-lg text-gray-400">
@@ -364,36 +364,6 @@
 								<span class="material-symbols-outlined">shopping_bag</span>
 								Pesan Sekarang
 							</a>
-						</div>
-					</div>
-
-					<div class="relative overflow-hidden rounded-3xl bg-white/10 p-8 backdrop-blur-md">
-						<h3 class="mb-6 text-xl font-bold text-white">Area Pengiriman</h3>
-						<div class="space-y-4">
-							{#each (loc.deliveryZones ?? []) as zone}
-								<div class="flex items-center justify-between rounded-xl bg-white/10 p-4">
-									<div class="flex items-center gap-3">
-										<div class="flex h-10 w-10 items-center justify-center rounded-full bg-red-700">
-											<span class="material-symbols-outlined text-sm text-white">location_on</span>
-										</div>
-										<div>
-											<p class="font-semibold text-white">{zone.name}</p>
-											<p class="text-xs text-gray-400">Jarak max: {zone.maxDistance}</p>
-										</div>
-									</div>
-									<span class="rounded-full px-3 py-1 text-xs font-bold text-white {zone.status === 'Aktif' ? 'bg-green-700' : 'bg-amber-700'}">
-										{zone.status}
-									</span>
-								</div>
-							{/each}
-						</div>
-
-						<div class="mt-6 rounded-xl bg-white/10 p-4">
-							<p class="text-sm text-gray-400">
-								💡 <strong class="text-white">Tips:</strong> Masukkan alamat Anda
-								saat checkout untuk memastikan lokasi Anda terjangkau layanan
-								pengiriman kami.
-							</p>
 						</div>
 					</div>
 				</div>
