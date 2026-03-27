@@ -18,9 +18,9 @@
 					<div
 						class="flex h-10 w-10 items-center justify-center rounded-lg bg-red-600"
 					>
-						<img src="logo.png" alt="">
+						<img src="logo.png" alt="Waroeng Badiduud" class="w-full h-full object-contain" />
 					</div>
-					<h3 class="text-xl font-bold text-white">Waroeng Badidud</h3>
+					<h3 class="text-xl font-bold text-white">Waroeng Badiduud</h3>
 				</div>
 				<p class="text-sm text-gray-400">
 					Makanan enak dengan harga terjangkau untuk keluarga Anda.
@@ -62,7 +62,7 @@
 		<!-- Bottom Bar -->
 		<div class="mt-8 border-t border-gray-700 pt-6">
 			<p class="text-center text-sm text-gray-400">
-				© {currentYear} Waroeng Badidud. All rights reserved.
+				© {currentYear} Waroeng Badiduud. All rights reserved.
 			</p>
 		</div>
 	</div>

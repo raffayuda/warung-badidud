@@ -111,7 +111,7 @@
 				</h1>
 
 				<p class="mx-auto max-w-3xl text-lg text-red-100">
-					Kunjungi Waroeng Badidud terdekat dan nikmati pengalaman kuliner yang tak terlupakan
+					Kunjungi Waroeng Badiduud terdekat dan nikmati pengalaman kuliner yang tak terlupakan
 				</p>
 
 				<!-- <div class="mt-12 flex flex-wrap justify-center gap-6">
@@ -139,7 +139,7 @@
 							loading="lazy"
 							referrerpolicy="no-referrer-when-downgrade"
 							class="grayscale hover:grayscale-0 transition-all duration-500"
-							title="Peta Lokasi Waroeng Badidud"
+							title="Peta Lokasi Waroeng Badiduud"
 						></iframe>
 
 						{#if $isEditMode && isAdmin}
@@ -160,7 +160,7 @@
 									<span class="material-symbols-outlined text-red-700">location_on</span>
 								</div>
 								<div>
-									<h3 class="font-bold text-gray-900">{loc.name ?? 'Waroeng Badidud'}</h3>
+									<h3 class="font-bold text-gray-900">{loc.name ?? 'Waroeng Badiduud'}</h3>
 									{#if $isEditMode && isAdmin}
 										<EditableText value={loc.address ?? ''} tag="p" className="text-sm text-gray-600" onSave={(v) => updateField('address', v)} />
 									{:else}
@@ -203,7 +203,7 @@
 								<span class="material-symbols-outlined text-5xl text-white">store</span>
 							</div>
 							<div>
-								<h3 class="text-3xl font-bold text-white">{loc.name ?? 'Waroeng Badidud'}</h3>
+								<h3 class="text-3xl font-bold text-white">{loc.name ?? 'Waroeng Badiduud'}</h3>
 								<p class="text-red-100">Satu-satunya lokasi resmi kami</p>
 							</div>
 						</div>
@@ -326,7 +326,7 @@
 						<h2 class="mb-6 text-4xl font-bold text-white">Layanan Pengiriman</h2>
 						<p class="mb-8 text-lg text-gray-400">
 							Tidak bisa datang ke outlet? Kami siap antar ke lokasi Anda! Nikmati
-							kelezatan Waroeng Badidud dari kenyamanan rumah Anda.
+							kelezatan Waroeng Badiduud dari kenyamanan rumah Anda.
 						</p>
 
 						<div class="space-y-4">

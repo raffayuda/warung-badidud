@@ -31,10 +31,10 @@
 		<!-- Logo -->
 		<a href="/" class="group flex items-center gap-3">
 			<div class="flex items-center justify-center">
-				<img src="/logo.png" alt="Warung Badidud" class="w-12 transition-transform duration-300 group-hover:scale-110" />
+				<img src="/logo.png" alt="Warung Badiduud" class="w-12 transition-transform duration-300 group-hover:scale-110" />
 			</div>
 			<span class="text-xl font-black tracking-tight text-white italic">
-				Waroeng Badidud
+				Waroeng Badiduud
 			</span>
 		</a>
 
