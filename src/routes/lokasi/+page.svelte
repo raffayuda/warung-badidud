@@ -33,24 +33,27 @@
 </script>
 
 <svelte:head>
-	<title>Lokasi Kami - Warung Badidud | Alamat & Jam Operasional</title>
-	<meta name="description" content="Temukan lokasi Warung Badidud terdekat. Lihat alamat, jam operasional, dan layanan pengiriman kami. Kunjungi outlet kami dan nikmati ayam geprek lezat!" />
-	<meta name="keywords" content="lokasi warung badidud, alamat warung badidud, jam buka warung badidud, delivery warung badidud, ayam geprek terdekat, warung makan terdekat" />
-	<meta name="author" content="Warung Badidud" />
-	<meta name="robots" content="index, follow" />
+	<title>Lokasi Warung Badiduud - Waroeng Badiduud Bogor | Alamat & Delivery</title>
+	<meta name="description" content="Lokasi Warung Badiduud (Waroeng Badiduud) di Bogor. Cek alamat lengkap, jam operasional, nomor layanan delivery, dan directions. Nikmati ayam geprek lezat terdekat!" />
+	<meta name="keywords" content="lokasi warung badiduud, lokasi waroeng badiduud, alamat warung badidud, jam buka warung badiduud, delivery warung badiduud, ayam geprek terdekat Bogor, warung badiduud Bogor, lokasi terdekat" />
+	<meta name="author" content="Warung Badiduud" />
+	<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+	<meta name="language" content="id-ID" />
+	<meta name="geo.placename" content="Bogor, Indonesia" />
+	<meta name="geo.country" content="ID" />
 	
 	<!-- Open Graph / Facebook -->
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://badidiud.boday.my.id/lokasi" />
-	<meta property="og:title" content="Lokasi Kami - Warung Badidud" />
-	<meta property="og:description" content="Temukan lokasi Warung Badidud terdekat. Lihat alamat, jam operasional, dan layanan pengiriman kami." />
+	<meta property="og:title" content="Lokasi Warung Badiduud - Bogor" />
+	<meta property="og:description" content="Temukan lokasi Warung Badiduud di Bogor. Lihat alamat, jam operasional, dan layanan delivery kami." />
 	<meta property="og:image" content="https://badidiud.boday.my.id/og-image.jpg" />
 	
 	<!-- Twitter -->
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:url" content="https://badidiud.boday.my.id/lokasi" />
-	<meta name="twitter:title" content="Lokasi Kami - Warung Badidud" />
-	<meta name="twitter:description" content="Temukan lokasi Warung Badidud terdekat. Lihat alamat, jam operasional, dan layanan pengiriman kami." />
+	<meta name="twitter:title" content="Lokasi Warung Badiduud - Bogor" />
+	<meta name="twitter:description" content="Temukan lokasi Warung Badiduud di Bogor. Lihat alamat, jam operasional, dan layanan delivery kami." />
 	<meta name="twitter:image" content="https://badidiud.boday.my.id/og-image.jpg" />
 	
 	<!-- Canonical URL -->
@@ -61,8 +64,9 @@
 		{
 			"@context": "https://schema.org",
 			"@type": "Restaurant",
-			"name": "Warung Badidud",
-			"description": "Warung makan yang menyajikan ayam geprek dan makanan nusantara dengan cita rasa autentik",
+			"name": "Warung Badiduud",
+			"alternateName": ["Waroeng Badiduud", "Warung Badidud", "Waroeng Badidud"],
+			"description": "Warung makan yang menyajikan ayam geprek dan makanan nusantara dengan cita rasa autentik. Lokasi di Bogor dengan fasilitas delivery",
 			"url": "https://badidiud.boday.my.id/lokasi",
 			"telephone": "+62-812-345-678",
 			"priceRange": "Rp",

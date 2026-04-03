@@ -10,45 +10,52 @@
 </script>
 
 <svelte:head>
-	<title>Warung Badidud - Ayam Geprek & Makanan Nusantara Enak</title>
-	<meta name="description" content="Warung Badidud menyajikan ayam geprek, paket hemat, rice bowl, dan cemilan dengan cita rasa nusantara autentik. Harga terjangkau, rasa bintang lima!" />
-	<meta name="keywords" content="ayam geprek, warung badidud, makanan nusantara, ayam enak, paket hemat, rice bowl, cemilan, kuliner indonesia, makanan murah enak" />
-	<meta name="author" content="Warung Badidud" />
-	<meta name="robots" content="index, follow" />
+	<title>Warung Badiduud - Waroeng Badiduud Ayam Geprek Enak Bogor</title>
+	<meta name="description" content="Warung Badiduud (Waroeng Badiduud) adalah restoran ayam geprek terbaik dengan cita rasa nusantara autentik. Menu favorit: ayam geprek, paket hemat, rice bowl, dan cemilan berkualitas. Harga terjangkau, rasa istimewa!" />
+	<meta name="keywords" content="warung badiduud, warung badidud, waroeng badiduud, waroeng badidud, ayam geprek, warung ayam, restoran nusantara, makanan murah, ayam goreng, rice bowl, paket hemat, kuliner Bogor, makanan enak, cemilan" />
+	<meta name="author" content="Warung Badiduud" />
+	<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+	
+	<!-- Additional SEO Meta Tags -->
+	<meta name="language" content="id-ID" />
+	<meta name="geo.placename" content="Bogor, Indonesia" />
+	<meta name="geo.country" content="ID" />
 	
 	<!-- Open Graph / Facebook -->
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://badidiud.boday.my.id/" />
-	<meta property="og:title" content="Warung Badidud - Ayam Geprek & Makanan Nusantara Enak" />
-	<meta property="og:description" content="Warung Badidud menyajikan ayam geprek, paket hemat, rice bowl, dan cemilan dengan cita rasa nusantara autentik." />
+	<meta property="og:title" content="Warung Badiduud - Waroeng Badiduud Ayam Geprek Enak" />
+	<meta property="og:description" content="Warung Badiduud menyajikan ayam geprek, paket hemat, rice bowl dengan cita rasa nusantara autentik. Harga terjangkau, rasa bintang lima!" />
 	<meta property="og:image" content="https://badidiud.boday.my.id/og-image.jpg" />
 	
 	<!-- Twitter -->
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:url" content="https://badidiud.boday.my.id/" />
-	<meta name="twitter:title" content="Warung Badidud - Ayam Geprek & Makanan Nusantara Enak" />
-	<meta name="twitter:description" content="Warung Badidud menyajikan ayam geprek, paket hemat, rice bowl, dan cemilan dengan cita rasa nusantara autentik." />
+	<meta name="twitter:title" content="Warung Badiduud - Waroeng Badiduud Ayam Geprek Enak" />
+	<meta name="twitter:description" content="Warung Badiduud menyajikan ayam geprek, paket hemat, rice bowl dengan cita rasa nusantara autentik." />
 	<meta name="twitter:image" content="https://badidiud.boday.my.id/og-image.jpg" />
 	
 	<!-- Canonical URL -->
 	<link rel="canonical" href="https://badidiud.boday.my.id/" />
 	
-	<!-- Structured Data - LocalBusiness -->
+	<!-- Structured Data - Restaurant with Alternative Names -->
 	<script type="application/ld+json">
 		{
 			"@context": "https://schema.org",
 			"@type": "Restaurant",
-			"name": "Warung Badidud",
-			"description": "Warung makan yang menyajikan ayam geprek dan makanan nusantara dengan cita rasa autentik",
+			"name": "Warung Badiduud",
+			"alternateName": ["Waroeng Badiduud", "Warung Badidud", "Waroeng Badidud"],
+			"description": "Warung (Waroeng) Badiduud adalah restoran ayam geprek dan makanan nusantara dengan cita rasa autentik, harga terjangkau, dan kualitas bintang lima",
 			"url": "https://badidiud.boday.my.id",
 			"logo": "https://badidiud.boday.my.id/logo.png",
 			"image": "https://badidiud.boday.my.id/og-image.jpg",
 			"telephone": "+62-812-345-678",
 			"priceRange": "Rp",
-			"servesCuisine": "Indonesian",
+			"servesCuisine": ["Indonesian", "Javanese", "Nusantara"],
 			"address": {
 				"@type": "PostalAddress",
-				"addressCountry": "ID"
+				"addressCountry": "ID",
+				"addressLocality": "Bogor, Indonesia"
 			},
 			"openingHoursSpecification": {
 				"@type": "OpeningHoursSpecification",
@@ -57,7 +64,33 @@
 				"closes": "22:00"
 			},
 			"menu": "https://badidiud.boday.my.id/menu",
-			"acceptsReservations": "False"
+			"acceptsReservations": false,
+			"sameAs": [
+				"https://www.instagram.com/warungbadiduud",
+				"https://www.facebook.com/warungbadiduud"
+			]
+		}
+	</script>
+
+	<!-- Additional Schema for LocalBusiness (untuk Local SEO) -->
+	<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "LocalBusiness",
+			"name": "Warung Badiduud",
+			"alternateName": ["Waroeng Badiduud"],
+			"description": "Restoran ayam geprek terbaik di Bogor dengan menu nusantara autentik",
+			"url": "https://badidiud.boday.my.id",
+			"address": {
+				"@type": "PostalAddress",
+				"addressCountry": "ID",
+				"addressLocality": "Bogor"
+			},
+			"areaServed": {
+				"@type": "City",
+				"name": "Bogor"
+			},
+			"serviceType": "Restaurant"
 		}
 	</script>
 </svelte:head>

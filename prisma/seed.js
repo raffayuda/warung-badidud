@@ -264,7 +264,7 @@ async function main() {
 			key: 'location',
 			value: JSON.stringify({
 				name: 'Warung Badiduud',
-				address: 'Jl. Raya Utama No. 123, Jakarta',
+				address: 'Jl. Raya Utama No. 123, Bogor',
 				phone: '+62 812 345 678',
 				whatsappNumber: '62812345678',
 				email: 'info@ayamjuara.com',
@@ -289,9 +289,9 @@ async function main() {
 					{ icon: 'local_parking', label: 'Parkir Luas' }
 				],
 				deliveryZones: [
-					{ name: 'Jakarta Pusat', maxDistance: '10 km', status: 'Aktif' },
-					{ name: 'Jakarta Selatan', maxDistance: '15 km', status: 'Aktif' },
-					{ name: 'Jakarta Barat', maxDistance: '12 km', status: 'Terbatas' }
+					{ name: 'Bogor Pusat', maxDistance: '10 km', status: 'Aktif' },
+					{ name: 'Bogor Selatan', maxDistance: '15 km', status: 'Aktif' },
+					{ name: 'Bogor Barat', maxDistance: '12 km', status: 'Terbatas' }
 				]
 			})
 		}

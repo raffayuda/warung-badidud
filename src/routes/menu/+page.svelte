@@ -124,24 +124,25 @@
 />
 
 <svelte:head>
-	<title>Daftar Menu - Warung Badidud | Ayam Geprek, Paket Hemat & Cemilan Enak</title>
-	<meta name="description" content="Lihat daftar menu Warung Badidud: ayam geprek, paket hemat, rice bowl, dan cemilan dengan harga terjangkau. Bahan berkualitas, rasa autentik nusantara!" />
-	<meta name="keywords" content="menu warung badidud, ayam geprek murah, paket hemat enak, rice bowl indonesia, cemilan nusantara, daftar menu makanan, harga ayam geprek" />
-	<meta name="author" content="Warung Badidud" />
-	<meta name="robots" content="index, follow" />
+	<title>Menu Warung Badiduud - Waroeng Badiduud Ayam Geprek, Paket Hemat & Cemilan</title>
+	<meta name="description" content="Menu Warung Badiduud (Waroeng Badiduud): ayam geprek crispy, paket hemat, rice bowl, dan cemilan nusantara dengan harga terjangkau. Cita rasa autentik, bahan berkualitas!" />
+	<meta name="keywords" content="menu warung badiduud, menu waroeng badiduud, warung badidud menu, waroeng badidud menu, ayam geprek murah, paket hemat enak, rice bowl, cemilan, daftar menu, harga ayam geprek" />
+	<meta name="author" content="Warung Badiduud" />
+	<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+	<meta name="language" content="id-ID" />
 	
 	<!-- Open Graph / Facebook -->
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://badidiud.boday.my.id/menu" />
-	<meta property="og:title" content="Daftar Menu - Warung Badidud" />
-	<meta property="og:description" content="Lihat daftar menu Warung Badidud: ayam geprek, paket hemat, rice bowl, dan cemilan dengan harga terjangkau." />
+	<meta property="og:title" content="Menu Warung Badiduud - Ayam Geprek & Cemilan Enak" />
+	<meta property="og:description" content="Menu lengkap Warung Badiduud: ayam geprek, paket hemat, rice bowl, dan cemilan nusantara dengan harga terjangkau." />
 	<meta property="og:image" content="https://badidiud.boday.my.id/og-image.jpg" />
 	
 	<!-- Twitter -->
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:url" content="https://badidiud.boday.my.id/menu" />
-	<meta name="twitter:title" content="Daftar Menu - Warung Badidud" />
-	<meta name="twitter:description" content="Lihat daftar menu Warung Badidud: ayam geprek, paket hemat, rice bowl, dan cemilan dengan harga terjangkau." />
+	<meta name="twitter:title" content="Menu Warung Badiduud - Ayam Geprek & Cemilan" />
+	<meta name="twitter:description" content="Menu lengkap Warung Badiduud: ayam geprek, paket hemat, rice bowl, dan cemilan nusantara dengan harga terjangkau." />
 	<meta name="twitter:image" content="https://badidiud.boday.my.id/og-image.jpg" />
 	
 	<!-- Canonical URL -->
@@ -152,8 +153,9 @@
 		{
 			"@context": "https://schema.org",
 			"@type": "Menu",
-			"name": "Menu Warung Badidud",
-			"description": "Daftar menu lengkap Warung Badidud dengan ayam geprek, paket hemat, rice bowl, dan cemilan",
+			"name": "Menu Warung Badiduud",
+			"alternateName": ["Menu Waroeng Badiduud", "Menu Warung Badidud", "Menu Waroeng Badidud"],
+			"description": "Daftar menu lengkap Warung Badiduud (Waroeng Badiduud) dengan ayam geprek, paket hemat, rice bowl, dan cemilan nusantara",
 			"url": "https://badidiud.boday.my.id/menu",
 			"hasMenuSection": [
 				{

@@ -7,7 +7,7 @@
 </script>
 
 <svelte:head>
-	<title>Login Admin - Warung Badidud</title>
+	<title>Login Admin - Waroeng Badiduud</title>
 	<meta name="robots" content="noindex, nofollow" />
 	<meta name="googlebot" content="noindex" />
 </svelte:head>

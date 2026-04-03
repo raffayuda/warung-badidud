@@ -57,24 +57,25 @@
 </script>
 
 <svelte:head>
-	<title>Tentang Kami - Warung Badidud | Cerita Dibalik Kelezatan Ayam Nusantara</title>
-	<meta name="description" content="Kenali lebih dekat Warung Badidud - Cerita di balik ayam geprek dengan cita rasa nusantara yang autentik. Komitmen kami menghadirkan makanan berkualitas untuk keluarga Indonesia." />
-	<meta name="keywords" content="tentang warung badidud, cerita warung badidud, sejarah ayam geprek, makanan nusantara, kuliner indonesia, warung makan enak" />
-	<meta name="author" content="Warung Badidud" />
-	<meta name="robots" content="index, follow" />
+	<title>Tentang Kami - Warung Badiduud & Waroeng Badiduud | Cerita Kelezatan Ayam Geprek</title>
+	<meta name="description" content="Kenali cerita Warung Badiduud (Waroeng Badiduud) - Dari passion menjadi rumah makan favorit. Komitmen kami: ayam geprek berkualitas, cita rasa nusantara autentik, untuk keluarga Indonesia." />
+	<meta name="keywords" content="tentang warung badiduud, tentang waroeng badiduud, cerita warung badidud, sejarah ayam geprek, makanan nusantara, warung makan enak, kuliner indonesia, tentang kami" />
+	<meta name="author" content="Warung Badiduud" />
+	<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+	<meta name="language" content="id-ID" />
 	
 	<!-- Open Graph / Facebook -->
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://badidiud.boday.my.id/tentang" />
-	<meta property="og:title" content="Tentang Kami - Warung Badidud" />
-	<meta property="og:description" content="Kenali lebih dekat Warung Badidud - Cerita di balik ayam geprek dengan cita rasa nusantara yang autentik." />
+	<meta property="og:title" content="Tentang Kami - Warung Badiduud (Waroeng Badiduud)" />
+	<meta property="og:description" content="Kenali cerita Warung Badiduud - Dari passion menjadi rumah makan favorit dengan cita rasa nusantara autentik." />
 	<meta property="og:image" content="https://badidiud.boday.my.id/og-image.jpg" />
 	
 	<!-- Twitter -->
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:url" content="https://badidiud.boday.my.id/tentang" />
-	<meta name="twitter:title" content="Tentang Kami - Warung Badidud" />
-	<meta name="twitter:description" content="Kenali lebih dekat Warung Badidud - Cerita di balik ayam geprek dengan cita rasa nusantara yang autentik." />
+	<meta name="twitter:title" content="Tentang Kami - Warung Badiduud" />
+	<meta name="twitter:description" content="Kenali cerita Warung Badiduud - Dari passion menjadi rumah makan favorit dengan cita rasa nusantara autentik." />
 	<meta name="twitter:image" content="https://badidiud.boday.my.id/og-image.jpg" />
 	
 	<!-- Canonical URL -->
@@ -85,7 +86,8 @@
 		{
 			"@context": "https://schema.org",
 			"@type": "Organization",
-			"name": "Warung Badidud",
+			"name": "Warung Badiduud",
+			"alternateName": ["Waroeng Badiduud", "Warung Badidud", "Waroeng Badidud"],
 			"description": "Warung makan yang menyajikan ayam geprek dan makanan nusantara dengan cita rasa autentik sejak 2020",
 			"url": "https://badidiud.boday.my.id/tentang",
 			"logo": "https://badidiud.boday.my.id/logo.png",
