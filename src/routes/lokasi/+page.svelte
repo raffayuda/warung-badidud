@@ -51,7 +51,7 @@
 	
 	<!-- Twitter -->
 	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:url" content="https://badidud.boday.my.id/lokasi"
+	<meta name="twitter:url" content="https://badidud.boday.my.id/lokasi" />
 	<meta name="twitter:title" content="Lokasi Warung Badiduud - Bogor" />
 	<meta name="twitter:description" content="Temukan lokasi Warung Badiduud di Bogor. Lihat alamat, jam operasional, dan layanan delivery kami." />
 	<meta name="twitter:image" content="https://badidud.boday.my.id/og-image.jpg" />
