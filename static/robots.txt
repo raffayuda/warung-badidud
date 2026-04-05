@@ -1,11 +1,11 @@
 # Robots.txt untuk Warung Badidud
-# https://badidiud.boday.my.id/robots.txt
+# https://badidud.boday.my.id/robots.txt
 
 User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://badidiud.boday.my.id/sitemap.xml
+Sitemap: https://badidud.boday.my.id/sitemap.xml
 
 # Crawl-delay (opsional, untuk membatasi request)
 Crawl-delay: 1

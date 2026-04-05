@@ -133,20 +133,20 @@
 	
 	<!-- Open Graph / Facebook -->
 	<meta property="og:type" content="website" />
-	<meta property="og:url" content="https://badidiud.boday.my.id/menu" />
+	<meta property="og:url" content="https://badidud.boday.my.id/menu" />
 	<meta property="og:title" content="Menu Warung Badiduud - Ayam Geprek & Cemilan Enak" />
 	<meta property="og:description" content="Menu lengkap Warung Badiduud: ayam geprek, paket hemat, rice bowl, dan cemilan nusantara dengan harga terjangkau." />
-	<meta property="og:image" content="https://badidiud.boday.my.id/og-image.jpg" />
+	<meta property="og:image" content="https://badidud.boday.my.id/og-image.jpg" />
 	
 	<!-- Twitter -->
 	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:url" content="https://badidiud.boday.my.id/menu" />
+	<meta name="twitter:url" content="https://badidud.boday.my.id/menu" />
 	<meta name="twitter:title" content="Menu Warung Badiduud - Ayam Geprek & Cemilan" />
 	<meta name="twitter:description" content="Menu lengkap Warung Badiduud: ayam geprek, paket hemat, rice bowl, dan cemilan nusantara dengan harga terjangkau." />
-	<meta name="twitter:image" content="https://badidiud.boday.my.id/og-image.jpg" />
+	<meta name="twitter:image" content="https://badidud.boday.my.id/og-image.jpg" />
 	
 	<!-- Canonical URL -->
-	<link rel="canonical" href="https://badidiud.boday.my.id/menu" />
+	<link rel="canonical" href="https://badidud.boday.my.id/menu" />
 	
 	<!-- Structured Data - Menu -->
 	<script type="application/ld+json">
@@ -156,7 +156,7 @@
 			"name": "Menu Warung Badiduud",
 			"alternateName": ["Menu Waroeng Badiduud", "Menu Warung Badidud", "Menu Waroeng Badidud"],
 			"description": "Daftar menu lengkap Warung Badiduud (Waroeng Badiduud) dengan ayam geprek, paket hemat, rice bowl, dan cemilan nusantara",
-			"url": "https://badidiud.boday.my.id/menu",
+			"url": "https://badidud.boday.my.id/menu",
 			"hasMenuSection": [
 				{
 					"@type": "MenuSection",

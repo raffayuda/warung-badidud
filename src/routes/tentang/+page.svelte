@@ -66,20 +66,20 @@
 	
 	<!-- Open Graph / Facebook -->
 	<meta property="og:type" content="website" />
-	<meta property="og:url" content="https://badidiud.boday.my.id/tentang" />
+	<meta property="og:url" content="https://badidud.boday.my.id/tentang" />
 	<meta property="og:title" content="Tentang Kami - Warung Badiduud (Waroeng Badiduud)" />
 	<meta property="og:description" content="Kenali cerita Warung Badiduud - Dari passion menjadi rumah makan favorit dengan cita rasa nusantara autentik." />
-	<meta property="og:image" content="https://badidiud.boday.my.id/og-image.jpg" />
+	<meta property="og:image" content="https://badidud.boday.my.id/og-image.jpg" />
 	
 	<!-- Twitter -->
 	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:url" content="https://badidiud.boday.my.id/tentang" />
+	<meta name="twitter:url" content="https://badidud.boday.my.id/tentang" />
 	<meta name="twitter:title" content="Tentang Kami - Warung Badiduud" />
 	<meta name="twitter:description" content="Kenali cerita Warung Badiduud - Dari passion menjadi rumah makan favorit dengan cita rasa nusantara autentik." />
-	<meta name="twitter:image" content="https://badidiud.boday.my.id/og-image.jpg" />
+	<meta name="twitter:image" content="https://badidud.boday.my.id/og-image.jpg" />
 	
 	<!-- Canonical URL -->
-	<link rel="canonical" href="https://badidiud.boday.my.id/tentang" />
+	<link rel="canonical" href="https://badidud.boday.my.id/tentang" />
 	
 	<!-- Structured Data - Organization -->
 	<script type="application/ld+json">
@@ -89,8 +89,8 @@
 			"name": "Warung Badiduud",
 			"alternateName": ["Waroeng Badiduud", "Warung Badidud", "Waroeng Badidud"],
 			"description": "Warung makan yang menyajikan ayam geprek dan makanan nusantara dengan cita rasa autentik sejak 2020",
-			"url": "https://badidiud.boday.my.id/tentang",
-			"logo": "https://badidiud.boday.my.id/logo.png",
+			"url": "https://badidud.boday.my.id/tentang",
+			"logo": "https://badidud.boday.my.id/logo.png",
 			"foundingDate": "2020",
 			"founders": [{
 				"@type": "Person",

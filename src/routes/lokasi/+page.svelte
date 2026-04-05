@@ -44,20 +44,20 @@
 	
 	<!-- Open Graph / Facebook -->
 	<meta property="og:type" content="website" />
-	<meta property="og:url" content="https://badidiud.boday.my.id/lokasi" />
+	<meta property="og:url" content="https://badidud.boday.my.id/lokasi" />
 	<meta property="og:title" content="Lokasi Warung Badiduud - Bogor" />
 	<meta property="og:description" content="Temukan lokasi Warung Badiduud di Bogor. Lihat alamat, jam operasional, dan layanan delivery kami." />
-	<meta property="og:image" content="https://badidiud.boday.my.id/og-image.jpg" />
+	<meta property="og:image" content="https://badidud.boday.my.id/og-image.jpg" />
 	
 	<!-- Twitter -->
 	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:url" content="https://badidiud.boday.my.id/lokasi" />
+	<meta name="twitter:url" content="https://badidud.boday.my.id/lokasi"
 	<meta name="twitter:title" content="Lokasi Warung Badiduud - Bogor" />
 	<meta name="twitter:description" content="Temukan lokasi Warung Badiduud di Bogor. Lihat alamat, jam operasional, dan layanan delivery kami." />
-	<meta name="twitter:image" content="https://badidiud.boday.my.id/og-image.jpg" />
+	<meta name="twitter:image" content="https://badidud.boday.my.id/og-image.jpg" />
 	
 	<!-- Canonical URL -->
-	<link rel="canonical" href="https://badidiud.boday.my.id/lokasi" />
+	<link rel="canonical" href="https://badidud.boday.my.id/lokasi" />
 	
 	<!-- Structured Data - LocalBusiness with Geo -->
 	<script type="application/ld+json">
@@ -67,7 +67,7 @@
 			"name": "Warung Badiduud",
 			"alternateName": ["Waroeng Badiduud", "Warung Badidud", "Waroeng Badidud"],
 			"description": "Warung makan yang menyajikan ayam geprek dan makanan nusantara dengan cita rasa autentik. Lokasi di Bogor dengan fasilitas delivery",
-			"url": "https://badidiud.boday.my.id/lokasi",
+			"url": "https://badidud.boday.my.id/lokasi",
 			"telephone": "+62-812-345-678",
 			"priceRange": "Rp",
 			"servesCuisine": "Indonesian",
