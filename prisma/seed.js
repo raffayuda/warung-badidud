@@ -265,8 +265,8 @@ async function main() {
 			value: JSON.stringify({
 				name: 'Warung Badiduud',
 				address: 'Jl. Raya Utama No. 123, Bogor',
-				phone: '+62 812 345 678',
-				whatsappNumber: '62812345678',
+				phone: '+62 895 365 453 833',
+				whatsappNumber: '628953654y53833',
 				email: 'info@ayamjuara.com',
 				mapEmbedUrl:
 					'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.572139324415!2d106.73988630000001!3d-6.575556199999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69c5006574a1d3%3A0x446318eda69f5fd!2sWaroeng%20Badiduud!5e0!3m2!1sid!2sid!4v1774268272622!5m2!1sid!2sid',

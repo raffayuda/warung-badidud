@@ -97,7 +97,7 @@
 				"name": "Pendiri Warung Badidud"
 			}],
 			"sameAs": [
-				"https://wa.me/62812345678"
+				"https://wa.me/62895365453833"
 			]
 		}
 	</script>

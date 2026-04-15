@@ -306,7 +306,7 @@
 								</span>
 							</a>
 							<a
-								href="https://wa.me/{loc.whatsappNumber ?? '62812345678'}"
+								href="https://wa.me/{loc.whatsappNumber ?? '895365453833'}"
 								target="_blank"
 								rel="noopener noreferrer"
 								class="flex-1 rounded-xl border-2 border-green-700 py-4 text-center text-base font-bold text-green-700 transition-all duration-300 hover:bg-green-700 hover:text-white"
@@ -384,7 +384,7 @@
 
 				<div class="flex flex-wrap justify-center gap-4">
 					<a
-						href="https://wa.me/{loc.whatsappNumber ?? '62812345678'}"
+						href="https://wa.me/{loc.whatsappNumber ?? '895365453833'}"
 						target="_blank"
 						rel="noopener noreferrer"
 						class="flex items-center gap-2 rounded-full bg-green-600 px-8 py-4 text-base font-bold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl hover:bg-green-700"
