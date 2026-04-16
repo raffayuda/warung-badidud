@@ -49,38 +49,77 @@
 	}
 
 	const colorMap = {
-		red: { bg: 'from-red-500 to-red-700', light: 'from-red-100 to-pink-100', text: 'text-red-700', icon: 'text-red-300', bgCircle: 'bg-red-100' },
-		green: { bg: 'from-green-500 to-green-700', light: 'from-green-100 to-emerald-100', text: 'text-green-700', icon: 'text-green-300', bgCircle: 'bg-green-100' },
-		amber: { bg: 'from-amber-500 to-orange-700', light: 'from-amber-100 to-orange-100', text: 'text-amber-700', icon: 'text-amber-300', bgCircle: 'bg-amber-100' },
-		blue: { bg: 'from-blue-500 to-cyan-700', light: 'from-blue-100 to-cyan-100', text: 'text-blue-700', icon: 'text-blue-300', bgCircle: 'bg-blue-100' }
+		red: {
+			bg: 'from-red-500 to-red-700',
+			light: 'from-red-100 to-pink-100',
+			text: 'text-red-700',
+			icon: 'text-red-300',
+			bgCircle: 'bg-red-100'
+		},
+		green: {
+			bg: 'from-green-500 to-green-700',
+			light: 'from-green-100 to-emerald-100',
+			text: 'text-green-700',
+			icon: 'text-green-300',
+			bgCircle: 'bg-green-100'
+		},
+		amber: {
+			bg: 'from-amber-500 to-orange-700',
+			light: 'from-amber-100 to-orange-100',
+			text: 'text-amber-700',
+			icon: 'text-amber-300',
+			bgCircle: 'bg-amber-100'
+		},
+		blue: {
+			bg: 'from-blue-500 to-cyan-700',
+			light: 'from-blue-100 to-cyan-100',
+			text: 'text-blue-700',
+			icon: 'text-blue-300',
+			bgCircle: 'bg-blue-100'
+		}
 	};
 </script>
 
 <svelte:head>
 	<title>Tentang Kami - Warung Badiduud & Waroeng Badiduud | Cerita Kelezatan Ayam Geprek</title>
-	<meta name="description" content="Kenali cerita Warung Badiduud (Waroeng Badiduud) - Dari passion menjadi rumah makan favorit. Komitmen kami: ayam geprek berkualitas, cita rasa nusantara autentik, untuk keluarga Indonesia." />
-	<meta name="keywords" content="tentang warung badiduud, tentang waroeng badiduud, cerita warung badidud, sejarah ayam geprek, makanan nusantara, warung makan enak, kuliner indonesia, tentang kami" />
+	<meta
+		name="description"
+		content="Kenali cerita Warung Badiduud (Waroeng Badiduud) - Dari passion menjadi rumah makan favorit. Komitmen kami: ayam geprek berkualitas, cita rasa nusantara autentik, untuk keluarga Indonesia."
+	/>
+	<meta
+		name="keywords"
+		content="tentang warung badiduud, tentang waroeng badiduud, cerita warung badidud, sejarah ayam geprek, makanan nusantara, warung makan enak, kuliner indonesia, tentang kami"
+	/>
 	<meta name="author" content="Warung Badiduud" />
-	<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+	<meta
+		name="robots"
+		content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+	/>
 	<meta name="language" content="id-ID" />
-	
+
 	<!-- Open Graph / Facebook -->
 	<meta property="og:type" content="website" />
-	<meta property="og:url" content="https://badidud.boday.my.id/tentang" />
+	<meta property="og:url" content="https://badiduud.boday.my.id/tentang" />
 	<meta property="og:title" content="Tentang Kami - Warung Badiduud (Waroeng Badiduud)" />
-	<meta property="og:description" content="Kenali cerita Warung Badiduud - Dari passion menjadi rumah makan favorit dengan cita rasa nusantara autentik." />
-	<meta property="og:image" content="https://badidud.boday.my.id/og-image.jpg" />
-	
+	<meta
+		property="og:description"
+		content="Kenali cerita Warung Badiduud - Dari passion menjadi rumah makan favorit dengan cita rasa nusantara autentik."
+	/>
+	<meta property="og:image" content="https://badiduud.boday.my.id/og-image.jpg" />
+
 	<!-- Twitter -->
 	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:url" content="https://badidud.boday.my.id/tentang" />
+	<meta name="twitter:url" content="https://badiduud.boday.my.id/tentang" />
 	<meta name="twitter:title" content="Tentang Kami - Warung Badiduud" />
-	<meta name="twitter:description" content="Kenali cerita Warung Badiduud - Dari passion menjadi rumah makan favorit dengan cita rasa nusantara autentik." />
-	<meta name="twitter:image" content="https://badidud.boday.my.id/og-image.jpg" />
-	
+	<meta
+		name="twitter:description"
+		content="Kenali cerita Warung Badiduud - Dari passion menjadi rumah makan favorit dengan cita rasa nusantara autentik."
+	/>
+	<meta name="twitter:image" content="https://badiduud.boday.my.id/og-image.jpg" />
+
 	<!-- Canonical URL -->
-	<link rel="canonical" href="https://badidud.boday.my.id/tentang" />
-	
+	<link rel="canonical" href="https://badiduud.boday.my.id/tentang" />
+
 	<!-- Structured Data - Organization -->
 	<script type="application/ld+json">
 		{
@@ -89,16 +128,16 @@
 			"name": "Warung Badiduud",
 			"alternateName": ["Waroeng Badiduud", "Warung Badidud", "Waroeng Badidud"],
 			"description": "Warung makan yang menyajikan ayam geprek dan makanan nusantara dengan cita rasa autentik sejak 2020",
-			"url": "https://badidud.boday.my.id/tentang",
-			"logo": "https://badidud.boday.my.id/logo.png",
+			"url": "https://badiduud.boday.my.id/tentang",
+			"logo": "https://badiduud.boday.my.id/logo.png",
 			"foundingDate": "2020",
-			"founders": [{
-				"@type": "Person",
-				"name": "Pendiri Warung Badidud"
-			}],
-			"sameAs": [
-				"https://wa.me/62895365453833"
-			]
+			"founders": [
+				{
+					"@type": "Person",
+					"name": "Pendiri Warung Badidud"
+				}
+			],
+			"sameAs": ["https://wa.me/62895365453833"]
 		}
 	</script>
 </svelte:head>
@@ -108,20 +147,32 @@
 <div class="min-h-screen bg-gradient-to-b from-white to-gray-50">
 	<main class="pt-19">
 		<!-- Hero Section -->
-		<section class="relative overflow-hidden bg-gradient-to-br from-red-600 via-red-700 to-red-800 py-20">
+		<section
+			class="relative overflow-hidden bg-gradient-to-br from-red-600 via-red-700 to-red-800 py-20"
+		>
 			<div class="absolute inset-0 opacity-10">
-				<div class="absolute inset-0" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+				<div
+					class="absolute inset-0"
+					style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"
+				></div>
 			</div>
 
 			<div class="relative mx-auto max-w-7xl px-6 text-center">
-				<div class="mb-6 inline-flex items-center gap-2 rounded-full bg-white/20 px-6 py-3 backdrop-blur-md">
+				<div
+					class="mb-6 inline-flex items-center gap-2 rounded-full bg-white/20 px-6 py-3 backdrop-blur-md"
+				>
 					<span class="material-symbols-outlined text-white">restaurant</span>
 					<span class="text-sm font-semibold text-white">{about.heroBadge ?? 'Sejak 2020'}</span>
 				</div>
 
 				<h1 class="mb-6 text-5xl font-extrabold tracking-tight text-white md:text-6xl">
 					{#if $isEditMode && isAdmin}
-						<EditableText value={about.heroTitle ?? 'Tentang Warung Badiduud'} tag="span" className="text-5xl md:text-6xl font-extrabold text-white" onSave={(v) => updateField('heroTitle', v)} />
+						<EditableText
+							value={about.heroTitle ?? 'Tentang Warung Badiduud'}
+							tag="span"
+							className="text-5xl md:text-6xl font-extrabold text-white"
+							onSave={(v) => updateField('heroTitle', v)}
+						/>
 					{:else}
 						{about.heroTitle ?? 'Tentang Warung Badiduud'}
 					{/if}
@@ -129,9 +180,15 @@
 
 				<p class="mx-auto max-w-3xl text-lg text-red-100">
 					{#if $isEditMode && isAdmin}
-						<EditableText value={about.heroSubtitle ?? ''} tag="span" className="text-lg text-red-100" onSave={(v) => updateField('heroSubtitle', v)} />
+						<EditableText
+							value={about.heroSubtitle ?? ''}
+							tag="span"
+							className="text-lg text-red-100"
+							onSave={(v) => updateField('heroSubtitle', v)}
+						/>
 					{:else}
-						{about.heroSubtitle ?? 'Kami menghadirkan cita rasa nusantara yang autentik dengan bahan berkualitas terbaik untuk keluarga Indonesia'}
+						{about.heroSubtitle ??
+							'Kami menghadirkan cita rasa nusantara yang autentik dengan bahan berkualitas terbaik untuk keluarga Indonesia'}
 					{/if}
 				</p>
 			</div>
@@ -144,18 +201,28 @@
 					<div class="relative">
 						<div class="grid grid-cols-2 gap-4">
 							<div class="space-y-4">
-								<div class="overflow-hidden rounded-2xl bg-gradient-to-br from-amber-100 to-orange-100 p-8">
+								<div
+									class="overflow-hidden rounded-2xl bg-gradient-to-br from-amber-100 to-orange-100 p-8"
+								>
 									<span class="material-symbols-outlined text-6xl text-amber-600">cottage</span>
 								</div>
-								<div class="overflow-hidden rounded-2xl bg-gradient-to-br from-red-100 to-pink-100 p-8">
-									<span class="material-symbols-outlined text-6xl text-red-600">local_fire_department</span>
+								<div
+									class="overflow-hidden rounded-2xl bg-gradient-to-br from-red-100 to-pink-100 p-8"
+								>
+									<span class="material-symbols-outlined text-6xl text-red-600"
+										>local_fire_department</span
+									>
 								</div>
 							</div>
 							<div class="space-y-4 pt-8">
-								<div class="overflow-hidden rounded-2xl bg-gradient-to-br from-green-100 to-emerald-100 p-8">
+								<div
+									class="overflow-hidden rounded-2xl bg-gradient-to-br from-green-100 to-emerald-100 p-8"
+								>
 									<span class="material-symbols-outlined text-6xl text-green-600">verified</span>
 								</div>
-								<div class="overflow-hidden rounded-2xl bg-gradient-to-br from-blue-100 to-cyan-100 p-8">
+								<div
+									class="overflow-hidden rounded-2xl bg-gradient-to-br from-blue-100 to-cyan-100 p-8"
+								>
 									<span class="material-symbols-outlined text-6xl text-blue-600">favorite</span>
 								</div>
 							</div>
@@ -165,16 +232,26 @@
 					<div class="flex flex-col justify-center">
 						<h2 class="mb-6 text-4xl font-bold text-gray-900">
 							{#if $isEditMode && isAdmin}
-								<EditableText value={about.storyTitle ?? 'Cerita Dibalik Kelezatan'} tag="span" className="text-4xl font-bold text-gray-900" onSave={(v) => updateField('storyTitle', v)} />
+								<EditableText
+									value={about.storyTitle ?? 'Cerita Dibalik Kelezatan'}
+									tag="span"
+									className="text-4xl font-bold text-gray-900"
+									onSave={(v) => updateField('storyTitle', v)}
+								/>
 							{:else}
 								{about.storyTitle ?? 'Cerita Dibalik Kelezatan'}
 							{/if}
 						</h2>
 
 						<div class="space-y-6 text-gray-600">
-							{#each (about.storyParagraphs ?? []) as paragraph, index}
+							{#each about.storyParagraphs ?? [] as paragraph, index}
 								{#if $isEditMode && isAdmin}
-									<EditableText value={paragraph} tag="p" className="text-gray-600" onSave={(v) => updateParagraph(index, v)} />
+									<EditableText
+										value={paragraph}
+										tag="p"
+										className="text-gray-600"
+										onSave={(v) => updateParagraph(index, v)}
+									/>
 								{:else}
 									<p>{@html paragraph}</p>
 								{/if}
@@ -185,13 +262,30 @@
 							<div class="mt-8 flex flex-wrap gap-4">
 								{#each about.stats as stat, index}
 									<div class="flex items-center gap-3">
-										<div class="flex h-12 w-12 items-center justify-center rounded-full {colorMap[stat.color]?.bgCircle ?? 'bg-red-100'}">
-											<span class="material-symbols-outlined {colorMap[stat.color]?.text ?? 'text-red-700'}">{stat.icon}</span>
+										<div
+											class="flex h-12 w-12 items-center justify-center rounded-full {colorMap[
+												stat.color
+											]?.bgCircle ?? 'bg-red-100'}"
+										>
+											<span
+												class="material-symbols-outlined {colorMap[stat.color]?.text ??
+													'text-red-700'}">{stat.icon}</span
+											>
 										</div>
 										<div>
 											{#if $isEditMode && isAdmin}
-												<EditableText value={stat.value} tag="p" className="text-2xl font-bold text-gray-900" onSave={(v) => updateStat(index, 'value', v)} />
-												<EditableText value={stat.label} tag="p" className="text-sm text-gray-600" onSave={(v) => updateStat(index, 'label', v)} />
+												<EditableText
+													value={stat.value}
+													tag="p"
+													className="text-2xl font-bold text-gray-900"
+													onSave={(v) => updateStat(index, 'value', v)}
+												/>
+												<EditableText
+													value={stat.label}
+													tag="p"
+													className="text-sm text-gray-600"
+													onSave={(v) => updateStat(index, 'label', v)}
+												/>
 											{:else}
 												<p class="text-2xl font-bold text-gray-900">{stat.value}</p>
 												<p class="text-sm text-gray-600">{stat.label}</p>
@@ -211,20 +305,37 @@
 			<div class="mx-auto max-w-7xl px-6">
 				<div class="mb-16 text-center">
 					<h2 class="mb-4 text-4xl font-bold text-gray-900">Nilai-Nilai Kami</h2>
-					<p class="text-lg text-gray-600 max-w-2xl mx-auto">
+					<p class="mx-auto max-w-2xl text-lg text-gray-600">
 						Prinsip yang kami pegang teguh dalam setiap hidangan yang kami sajikan
 					</p>
 				</div>
 
 				<div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
-					{#each (about.values ?? []) as value, index}
-						<div class="group rounded-2xl bg-white p-8 text-center shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
-							<div class="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br {colorMap[value.color]?.bg ?? 'from-red-500 to-red-700'} text-white shadow-lg transition-transform duration-300 group-hover:scale-110">
+					{#each about.values ?? [] as value, index}
+						<div
+							class="group rounded-2xl bg-white p-8 text-center shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
+						>
+							<div
+								class="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br {colorMap[
+									value.color
+								]?.bg ??
+									'from-red-500 to-red-700'} text-white shadow-lg transition-transform duration-300 group-hover:scale-110"
+							>
 								<span class="material-symbols-outlined text-3xl">{value.icon}</span>
 							</div>
 							{#if $isEditMode && isAdmin}
-								<EditableText value={value.title} tag="h3" className="mb-3 text-xl font-bold text-gray-900" onSave={(v) => updateValue(index, 'title', v)} />
-								<EditableText value={value.description} tag="p" className="text-gray-600" onSave={(v) => updateValue(index, 'description', v)} />
+								<EditableText
+									value={value.title}
+									tag="h3"
+									className="mb-3 text-xl font-bold text-gray-900"
+									onSave={(v) => updateValue(index, 'title', v)}
+								/>
+								<EditableText
+									value={value.description}
+									tag="p"
+									className="text-gray-600"
+									onSave={(v) => updateValue(index, 'description', v)}
+								/>
 							{:else}
 								<h3 class="mb-3 text-xl font-bold text-gray-900">{value.title}</h3>
 								<p class="text-gray-600">{value.description}</p>
@@ -240,23 +351,40 @@
 			<div class="mx-auto max-w-4xl px-6 text-center">
 				<h2 class="mb-6 text-4xl font-bold text-white">
 					{#if $isEditMode && isAdmin}
-						<EditableText value={about.ctaTitle ?? 'Ingin Mencoba Kelezatan Kami?'} tag="span" className="text-4xl font-bold text-white" onSave={(v) => updateField('ctaTitle', v)} />
+						<EditableText
+							value={about.ctaTitle ?? 'Ingin Mencoba Kelezatan Kami?'}
+							tag="span"
+							className="text-4xl font-bold text-white"
+							onSave={(v) => updateField('ctaTitle', v)}
+						/>
 					{:else}
 						{about.ctaTitle ?? 'Ingin Mencoba Kelezatan Kami?'}
 					{/if}
 				</h2>
 				<p class="mb-8 text-lg text-red-100">
 					{#if $isEditMode && isAdmin}
-						<EditableText value={about.ctaDescription ?? ''} tag="span" className="text-lg text-red-100" onSave={(v) => updateField('ctaDescription', v)} />
+						<EditableText
+							value={about.ctaDescription ?? ''}
+							tag="span"
+							className="text-lg text-red-100"
+							onSave={(v) => updateField('ctaDescription', v)}
+						/>
 					{:else}
-						{about.ctaDescription ?? 'Kunjungi outlet kami atau pesan online dan nikmati cita rasa nusantara yang autentik'}
+						{about.ctaDescription ??
+							'Kunjungi outlet kami atau pesan online dan nikmati cita rasa nusantara yang autentik'}
 					{/if}
 				</p>
 				<div class="flex flex-wrap justify-center gap-4">
-					<a href="/menu" class="rounded-full bg-white px-8 py-4 text-base font-bold text-red-700 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl">
+					<a
+						href="/menu"
+						class="rounded-full bg-white px-8 py-4 text-base font-bold text-red-700 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl"
+					>
 						Lihat Menu
 					</a>
-					<a href="/lokasi" class="rounded-full bg-red-800 px-8 py-4 text-base font-bold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl hover:bg-red-900">
+					<a
+						href="/lokasi"
+						class="rounded-full bg-red-800 px-8 py-4 text-base font-bold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:bg-red-900 hover:shadow-xl"
+					>
 						Lokasi Outlet
 					</a>
 				</div>
